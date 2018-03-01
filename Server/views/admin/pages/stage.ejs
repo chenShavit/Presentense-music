@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
+    <script src="../js/s3service.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side nav-sidebar-container" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <!-- <img alt="image" class="img-circle" src="../admin-images/logo.png" /> -->
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">Presentense</strong>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="logo-element">
+                            Presentense
+                        </div>
+                    </li>
+                    <li>
+                        <a href="dashboard">
+                            <i class="fa fa-th-large"></i>
+                            <span class="nav-label">נתונים כלליים</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users">
+                            <i class="fa fa-male"></i>
+                            <span class="nav-label">משתמשים</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="contests">
+                            <i class="fa fa-users"></i>
+                            <span class="nav-label">תחרויות</span>
+                        </a>
+                    </li>
+                   <% if (adminUser.type == 'administrator' ) { %>
+                    <li>
+                        <a href="adminUsers">
+                            <i class="fa fa-suitcase"></i>
+                            <span class="nav-label">מנהלים</span>
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <% if (JSON.stringify(stage) === JSON.stringify({})) {%>
+                            <h5 class="pull-right">שלב חדש</h5>
+                            <% } else { %>
+                            <h5 class="pull-right">עדכון שלב</h5>
+                            <% } %>
+                        </div>
+                        <div class="ibox-content">
+                            <form id="stage-form" method="post" action="/admin/updateStage" class="form-horizontal">
+                                <input value="<%=stage.id%>" name="id" hidden>                                
+                                <input value="<%=contest%>" name="contest_id" hidden>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">סוג שלב</label>
+                                    <div class="col-sm-10">
+                                        <select id="question-type-select" name="question_type" value="<%= stage.question_type %>" class="form-control">
+                                            <option selected value="">בחר סוג שאלה</option>
+                                            <option <%=stage.question_type=='free_text' ? 'selected' : '' %> value="free_text">Free Text</option>
+                                            <option <%=stage.question_type=='select' ? 'selected' : '' %> value="select">Select</option>
+                                            <option <%=stage.question_type=='multiselect' ? 'selected' : '' %> value="multiselect">Multi Select</option>
+                                            <option <%=stage.question_type=='file' ? 'selected' : '' %> value="file">File Upload</option>
+                                            <option <%=stage.question_type=='video' ? 'selected' : '' %> value="video">Video</option>
+                                            <option <%=stage.question_type=='cases' ? 'selected' : '' %> value="cases">Location/Personality</option>
+                                            <option <%=stage.question_type=='missions' ? 'selected' : '' %> value="missions">Missions</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="dynamic-question-section"></div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">פירוט שלב</label>
+                                    <div class="col-sm-10">
+                                            <textarea class="form-control textareasize" name="stage_details"><%= stage.stage_details %></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">תמונת שלב</label>
+                                    <div class="col-sm-10">
+                                        <span class="col-sm-1">
+                                            <img id="loader-check-image" width="30">
+                                            <% if (stage.image) { %>
+                                            <a target="_blank" href="<%= stage.image %>">
+                                                <img alt="" src="<%= stage.image %>" class="img-circle" style="width: 35px; height: 35px;" />
+                                            </a>
+                                            <% } %>
+                                        </span>
+                                        <span class="col-sm-11">
+                                            <input id="stage-hidden-image" type="hidden" name="image" class="form-control">
+                                            <input id="stage-image" type="file" value="<%= stage.image %>" class="form-control" accept="image/*">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">תאריכי שלב</label>
+                                    <div class="col-sm-10">
+                                        <label class="col-sm-1 control-label">מ-</label>
+                                        <div class="col-sm-11 control-label">
+                                            <input type="date" id="from-date" name="from" class="form-control">
+                                        </div>
+                                        <label class="col-sm-1 control-label">עד-</label>
+                                        <div class="col-sm-11 control-label">
+                                            <input type="date" id="to-date" name="to" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" id="clickingStuff">פיזה</label>
+                                    <div class="col-sm-10">
+                                        <!-- <div class="i-checks" style="vertical-align: middle;"> -->
+                                        <input id="pisa_questions_difficulty" name="pisa_questions_difficulty" value="<%= stage.pisa_questions_difficulty %>" hidden>
+                                        <button id="add-pisa-questions-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#pisa-modal">
+                                            לחץ להוספת פיזה
+                                        </button>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">המשך כאשר</label>
+                                    <div class="col-sm-10">
+                                        <select name="continue_when" value="<%= stage.continue_when %>" class="form-control">
+                                            <option value="">בחר מתי להמשיך לשלב הבא</option>
+                                            <option <%= stage.continue_when=='any' ? 'selected' : '' %> value="any">המשתמש ענה על השאלה</option>
+                                            <option <%= stage.continue_when=='correct' ? 'selected' : '' %> value="correct">המשתמש ענה נכון על השאלה</option>
+                                            <option <%= stage.continue_when=='date' ? 'selected' : '' %> value="date">הגיע התאריך של השלב הבא</option>
+                                            <option <%= stage.continue_when=='correct-date' ? 'selected' : '' %> value="correct-date">המשתמש ענה נכון והגיע התאריך של השלב הבא</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">טקסט בריחוף</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" maxlength="24" name="hover_text" value="<%= stage.hover_text %>" class="form-control">
+                                    </div>
+                                </div>    
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">מס׳ משתתפים בשלב</label>
+                                    <div class="col-sm-10">
+                                        <input id="input-participants" type="number" name="max_participants" value="<%= stage.max_participants %>" class="form-control" min="0">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">מס׳ מנצחים בשלב</label>
+                                    <div class="col-sm-10">
+                                        <input id="input-winners" type="number" name="max_winners" value="<%= stage.max_winners %>" class="form-control" min="0">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">קוד למעבר שלב</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="pass_level_code" value="<%= stage.pass_level_code %>" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">אינדקס</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="index" value="<%=stage.index%>" class="form-control" min="0" max="999">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <a data-toggle="modal" class="btn btn-white" href="javascript:history.back()">חזור</a>
+                                        <% if (JSON.stringify(stage) === JSON.stringify({})) { %>
+                                            <input type="submit" class="btn btn-primary" value="צור">
+                                            <% } else { %>
+                                                <input type="submit" class="btn btn-primary" value="שמור">
+                                                <% }%>
+                                    </div>
+                                </div>
+                                <div class="modal inmodal" id="pisa-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content animated fadeIn">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title">הוספת שאלות פיזה</h4>
+                                            </div>
+                                            <div class="pisa-question-container"></div>
+                                            <div dir="rtl" class="modal-body">
+                                                <div class="form-group">
+                                                    <span class="col-sm-3 text-icon-container" id="addNewPisaQuestion" style="cursor: pointer;">
+                                                        <i class="fa fa-plus plus-icon icon-text-maring" aria-hidden="true"></i>
+                                                        הוסף שאלה
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="savePisa()">שמור</button>
+                                                <button type="button" class="btn btn-white" data-dismiss="modal">סגור</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- When pressed I should be able to add Pisa questions parameters.. -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+                    <a href="http://moveosoftware.com">moveosoftware.com</a>
+                </div>
+                <div class="pull-left">
+                    <strong>Powered by</strong> Moveo Group
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        var stage = <%- JSON.stringify(stage) %>;
+
+        $('#stage-image').click(function() {
+            if (stage.image)
+                alert('שים לב שטעינת תמונה חדשה תחליף את התמונה הקיימת');
+        });
+// // // // // // 
+    //Fill data to Edit Mode
+    function fillData(){
+        if (stage.image)
+            $('#stage-hidden-image').attr('value', stage.image);
+        fillGeneralData();
+        renderRelatedDynamicHtml();
+    }
+    
+    function fillGeneralData(){
+        $('#question-type-select').val(stage.question_type);
+    }
+
+    fillData();
+//  // // // // // // 
+
+    function refillPisaQuestionsData() {
+        stage.pisa_questions_difficulty.forEach(element => addNewPisaQuestion());
+    }
+
+    if (stage.pisa_questions_difficulty)
+        refillPisaQuestionsData();
+
+    function savePisa() {
+        var pisa_questions = [];
+        $('.pisa-question-selection').each(function () {
+            pisa_questions.push($(this).val());
+        });
+        $('#pisa_questions_difficulty').val(pisa_questions);
+    }
+
+    $('#addNewPisaQuestion').click(addNewPisaQuestion);
+    function addNewPisaQuestion() {
+        $.get('../questions/pisa.html', function (data) {
+            $('.pisa-question-container').append(data)
+        });
+    }
+    
+    var participants = document.getElementById("input-participants");
+    var winners = document.getElementById("input-winners");
+
+    function limit() {
+        winners.value = Math.min(Math.round(participants.value * .8), winners.value);
+    }
+
+    participants.onchange = limit;
+    winners.onchange = limit;
+
+        $('.prosecutors').DataTable({
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [],
+            language: {
+                "search": "חיפוש: ",
+                "zeroRecords": "לא נמצאו רשומות",
+                "info": "מציג עמוד _PAGE_ מתוך _PAGES_",
+                "infoEmpty": "לא נמצאו רשומות",
+                "infoFiltered": "(מתוך _MAX_ בסה״כ)",
+                paginate: {
+                    next: 'הבא',
+                    previous: 'הקודם'
+                }
+            },
+            deferRender: true,
+            bLengthChange: false,
+            aoColumnDefs: [
+                { 'bSortable': false, 'aTargets': ['user-image', 'action'] }
+            ]
+        });
+
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+
+        function renderRelatedDynamicHtml() {
+            if (!$('#dynamic-question-section').is(':empty')) {
+                swal({
+                    title: "אתה עומד לשנות את סוג השלב",
+                    text: 'כל המידע שהזנת ייאבד',
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "אישור",
+                    cancelButtonText: "ביטול",
+                    closeOnConfirm: true
+                }, function (isConfirm) {
+                    if (isConfirm)
+                        changeQuestionType();
+                    else
+                        $('#question-type-select').val(question_type_before_change)
+                });
+            }
+            else
+                changeQuestionType();
+        }
+
+        function changeQuestionType() {
+            $('#dynamic-question-section').empty();
+            var type = $('#question-type-select').val();
+            if (type != '')
+                renderHtml('#dynamic-question-section', type);
+        }
+
+        var question_type_before_change = '';
+        $('#question-type-select').on('focus', function(){
+            question_type_before_change = this.value;
+        }).on('change', renderRelatedDynamicHtml);
+
+        function renderHtml(itemId, type) {
+            if (type != '') {
+                $(itemId).load("../questions/" + type + ".html");
+            }
+        }
+
+    // Limit & Initial Date Pickers
+    $(document).ready(function () {
+        var now = new Date()
+        var today = formatDate(now);
+
+        $('#from-date').attr('min', today);
+        $('#to-date').attr('min', today);
+
+        var from = new Date();
+        var to = new Date();
+        if (stage.from)
+             from = new Date(Date.parse(stage.from))
+        if (stage.to)
+            to = new Date(Date.parse(stage.to))
+        $('#from-date').val(formatDate(from));
+        $('#to-date').val(formatDate(to));
+    });
+
+        function formatDate(time) {
+            var dd = time.getDate();
+            var mm = time.getMonth() + 1; //January is 0!
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            return time.getFullYear() + '-' + mm + '-' + dd;
+        }
+
+        var fileUrl = '';
+        var region = 'us-west-2';
+        var id = '48f34302-91aa-44ce-9a19-b05bd3709a2a';
+        var version = '2006-03-01';
+        var bucketName = 'presentense-stage-images';
+        var s3Wrapp = S3Rapper(region, id, bucketName, version);
+
+        $('input[type=file]').change(function (event) {
+            console.log("Uploading ", event.target.files[0].name, "...");
+            $('#loader-check-image').attr('src', '../admin-images/loader.gif').attr('width', '50');
+            s3Wrapp.uploadFile(event.target.files[0], function (response) {
+                if (response.success === true) {
+                    console.log('uploaded!');
+                    $('#loader-check-image').attr('src', '../admin-images/check.svg').attr('width', '30');
+                    $('#stage-hidden-image').attr('value', response.url);
+                }
+                else
+                    alert('failed to upload: ' + response.error);
+            });
+        });
+
+        $('#stage-form').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/admin/updateStage",
+                data: $(this).serialize(),
+                success: function (data) {
+                    if (typeof data.redirect == 'string')
+                        window.location.replace(window.location.protocol + "//" + window.location.host + data.redirect);
+                    else
+                        swal({
+                            title: "אירעה שגיאה ביצירת שלב",
+                            text: data.error,
+                            type: "error",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "אישור",
+                            closeOnConfirm: false
+                        });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

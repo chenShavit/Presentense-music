@@ -1,0 +1,66 @@
+<div data-collapse="medium" data-animation="default" data-duration="400" class="navigation-barpp darkpp w-nav">
+  <a href="index.html" class="brand-linkp left-spacingp w-nav-brand"></a>
+  <nav role="navigation" class="navigation-menup w-nav-menu"><a [routerLink]="['/pisaquestions', 5]" class="pnavigation-link pwhite w-nav-link">שאלות</a><a [routerLink]="['/15']"
+      class="pnavigation-link pwhite w-nav-link">אודות</a></nav>
+  <div class="hamburger-buttonp whitep w-nav-button">
+    <div class="piconp w-icon-nav-menu"></div>
+  </div>
+</div>
+<div class="phero-sectionp pquestionsp">
+  <div class="rowp grouprow1 w-row">
+    <div class="pcolumn w-col w-col-5">
+      <div class="div-block-3p transparent">
+        <div class="text-blockp">1,115</div>
+        <div class="text-block-2p">סה״כ נקודות</div>
+      </div><img src="images/Big-ball.png" width="750" srcset="images/Big-ball-p-500.png 500w, images/Big-ball-p-800.png 800w, images/Big-ball-p-1080.png 1080w, images/Big-ball-p-1600.png 1600w, images/Big-ball.png 1671w"
+        sizes="100vw" class="imagep"></div>
+    <div class="pcolumn group w-clearfix w-col w-col-7">
+      <h1 class="pheadingp">שאלות</h1><img src="images/Rectangle-925.png" class="image-12p questiontitle popupquestions"></div>
+  </div>
+  <div class="rowp grouprow2 w-row">
+    <div class="pcolumn w-col w-col-5">
+      <div class="div-block-3p bottomp">
+        <div class="text-blockp upper">1,015</div>
+        <div class="div-block-3p bottomp onlymobile w-hidden-main">
+          <div class="text-blockp bottomp secondp">נקודות ברמה</div>
+        </div>
+      </div><img src="images/Big-ball.png" width="750" srcset="images/Big-ball-p-500.png 500w, images/Big-ball-p-800.png 800w, images/Big-ball-p-1080.png 1080w, images/Big-ball-p-1600.png 1600w, images/Big-ball.png 1671w"
+        sizes="100vw" class="imagep"></div>
+    <div class="pcolumn group w-col w-col-7">
+      <div class="container-9p w-hidden-main w-container"><a href="#" class="button-7p w-button">ממוצע</a><img src="images/left-arrow.png" width="22" srcset="images/left-arrow-p-500.png 500w, images/left-arrow-p-800.png 800w, images/left-arrow-p-1080.png 1080w, images/left-arrow-p-1600.png 1600w, images/left-arrow.png 2050w"
+          sizes="(max-width: 479px) 20vw, (max-width: 991px) 22px, 100vw" class="image-22p dropdownp w-hidden-main"></div>
+    </div>
+  </div>
+</div>
+<div class="modawrapperp w-hidden-main">
+  <div class="container-10p w-hidden-main w-container"><a href="#" class="button-7p afterpopup w-button">ממוצע</a></div>
+  <div class="container-11p w-container"><a href="#" class="button-7p afterpopup _2nd w-button">ממוצע</a></div>
+  <div class="container-12p w-container"><a href="#" class="button-7p afterpopup _3rd w-button">ממוצע</a></div>
+  <div class="container-12p w-container"><a href="#" class="button-7p afterpopup _4th w-button">ממוצע</a></div>
+  <div class="container-12p w-container"><a href="#" class="button-7p afterpopup _5th w-button">ממוצע</a></div>
+</div>
+<div class="sectionp lightp levelsp">
+  <div class="div-block-3p bottomp _2ndp groupdivp w-hidden-tiny">
+    <div class="text-block-2p bottinmp">נקודות ברמה</div>
+  </div>
+  <div class="div-block-2p _2 special w-hidden-tiny w-clearfix">
+    <a *ngFor="let level of levels; let i = index"  [routerLink]="['/pisaquestions', i+1]"  [ngClass]="levels[i].class"  class="button-3p levelp group w-button">
+    {{ level.titleHe }}
+    </a>
+  </div>
+  <pisa-questions-list [level]="level" [questions]="questions"></pisa-questions-list>
+
+</div>
+<div class="footerp accentpp">
+  <div class="container-3p w-container">
+    <div class="float-rightp">
+      <a href="http://www.facebook.com/userid" class="social-icon-linkp w-inline-block"></a>
+      <a href="http://www.twitter.com/userid" class="social-icon-linkp w-inline-block"></a>
+      <a href="http://www.linkedin.com/userid" class="social-icon-linkp w-inline-block"></a>
+      <a class="social-icon-linkp w-inline-block"></a>
+    </div>
+    <div class="footer-textp">Powered by</div><img src="images/Moveo-White.png" width="145.5" class="image-4p"></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+<script src="js/webflow.js" type="text/javascript"></script>
+<!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->

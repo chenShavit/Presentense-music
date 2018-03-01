@@ -1,0 +1,139 @@
+body {
+    background-color: #168cdb;
+}
+
+.loginscreen img.logo {
+  max-width:100%; 
+  max-height: 100%; 
+}
+
+.profile-element .img-circle {
+      width: 50%;
+      border-radius: 0;
+}
+
+.nav-header {
+  background: none;
+}
+
+.column {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.titleForList {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 23px;
+  min-height: 50px;
+  min-width: 250px;
+  float: initial;
+  display: block;
+}
+
+.latest-users-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.latest-user-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ibox-title-text-box {
+  float: right;
+}
+
+th {
+  text-align: right;
+}
+
+.textareasize {
+  height: 100px !important;
+  border-radius: 3px;
+  resize: none;
+	line-height:1.5;
+}
+
+.titleForList .ibox-title {
+  border-radius: 10px;  
+}
+.titleForList .ibox-title h5 {
+  float: unset;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+  float: left;
+}
+
+.login-app-title {
+  color: #1a6eb3;
+}
+
+.middle-box h1 {
+  margin: 75px -75px 70px -75px;  
+  font-size: 80px !important;
+}
+
+.middle-box h2 {
+  margin: 175px -75px 70px -75px;  
+  /* font-size: 80px !important; */
+}
+
+.nav-sidebar-container {
+  background-color: #168cdb;
+}
+
+.metismenu > li > a {
+  color: #ffffff;
+}
+
+.btn-primary {
+  background-color: #1a6eb3;
+  border-color: #1a6eb3;
+  color: #FFFFFF;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.btn-primary.active:focus {
+  background-color: #2185d6;
+  border-color: #2185d6;
+  color: #FFFFFF;
+}
+
+.btn-primary.btn-outline {
+  color: #1a6eb3;
+}
+.btn-primary-cancel {
+  background-color: #b3311a;
+  border-color: #b3311a;
+  color: #FFFFFF;
+}
+.btn-primary-cancel:hover,
+.btn-primary-cancel:focus,
+.btn-primary-cancel:active,
+.btn-primary-cancel.active,
+.open .dropdown-toggle.btn-primary-cancel,
+.btn-primary-cancel:active:focus,
+.btn-primary-cancel:active:hover,
+.btn-primary-cancel.active:hover,
+.btn-primary-cancel.active:focus {
+  background-color: #dd3333da;
+  border-color: #dd3333da;
+  color: #FFFFFF;
+}
+
+.btn-primary-cancel.btn-outline {
+  color: #dd3333da;
+}

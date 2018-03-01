@@ -1,0 +1,138 @@
+<main-header></main-header>
+
+<!-- Mobile Header-->
+<style>
+  .header-mobile-social {
+    z-index: 501 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    max-width: 100vw;
+  }
+  
+  .header-mobile-social .disconnect {
+    display: inline-block;
+  }
+  
+  .header-mobile-social .navigation-menup {
+    transform: scaleY(0);
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    background-color: #272d38;
+    display: flex;
+    flex-direction: column;
+    transform-origin: 0 0;
+  }
+  
+  .header-mobile-social .navigation-menup.open {
+    transform: scaleY(1);
+  }
+  
+  @media (max-width: 480px) {
+    .header-mobile-social {
+      display: initial;
+    }
+    .pnavigation-link.pwhite {
+      display: inline-block !important;
+    }
+  }
+</style>
+<div *ngIf="!dataService.showPopupSign && !dataService.showPopupContac" data-collapse="medium" data-animation="default" data-duration="400"
+  class="navigation-barpp darkpp w-nav header-mobile-social">
+
+  <div (click)="toggleMenu()" id="hamburger" class="hamburger-buttonp whitep w-nav-button">
+    <div class="picon w-icon-nav-menu"></div>
+  </div>
+  <nav role="navigation" class="navigation-menup w-nav-menu">
+    <a *ngIf="dataService.user.isEmpty() == false;" (click)="dataService.logOut();analyticsEvent('התנתק')" class="pnavigation-link pwhite w-nav-link">
+    {{dataService.getText('disConnect')}}
+  </a>
+    <a (click)="dataService.showContacPopup();analyticsEvent('צור קשר')" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText('contactUs')}}
+  </a>
+    <a *ngIf="dataService.user.isEmpty() == false;" [routerLink]="['/question-flow',dataService.type]" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText('comp')}}
+    </a>
+
+    <a *ngIf="dataService.user.isEmpty() == true && !hidesignup" (click)="dataService.showSignupPopup()" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText('enter')}}
+    </a>
+    <a *ngIf="dataService.user.isEmpty()==false;" (click)="analyticsEvent('פרופיל')" [routerLink]="['/profile']" class="pnavigation-link pwhite w-nav-link">
+    {{dataService.getText('private')}}
+    </a>
+  </nav>
+</div>
+<!-- End Mobile Header-->
+
+<div class="section light-regular">
+  <div class="profile-container w-container">
+    <div class="mission-1st ishi">
+      <div class="title-row personal w-row">
+
+        <div class="column-15 w-clearfix w-col w-col-11">
+          <h1 class="heading-2 dark comp">{{dataService.getText('titlePro')}}</h1>
+        </div>
+      </div>
+      <div class="row-but w-row">
+        <div class="w-col w-col-6">
+          <input disabled type="email" class="groupfield w-input" maxlength="256" data-name="מייל" placeholder="{{dataService.getText('emailAddress')}}"
+            required="" [(ngModel)]="dataService.user.email">
+        </div>
+        <div class="w-col w-col-6">
+          <input type="text" class="groupfield w-input" maxlength="256" data-name="שם מלא" placeholder="{{dataService.getText('fullName')}}"
+            required="" [(ngModel)]="dataService.user.name">
+        </div>
+      </div>
+      <div class="row-but w-row">
+        <div class="w-col w-col-6">
+          <input type="text" class="groupfield w-input" maxlength="3" data-name="גיל" placeholder="{{dataService.getText('age')}}"
+            required="" [(ngModel)]="dataService.user.age">
+        </div>
+        <div class="w-col w-col-6" dir="rtl">
+          <select class="groupfield w-input" data-name="מין" placeholder="מין" required="" [(ngModel)]="dataService.user.gender">
+            <option value="choose">{{dataService.getText('chooseGender')}}</option>
+            <option value="male">{{dataService.getText('male')}}</option>
+            <option value="female">{{dataService.getText('female')}}</option>
+            <option value="otherGender">{{dataService.getText('otherGender')}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row-but w-row">
+        <div class="column-13 w-col w-col-6">
+          <a [routerLink]="['/change-pass',type]" class="groupfield-delete w-input">{{dataService.getText('changePassButton')}}</a>
+        </div>
+        <div class="column-10 w-col w-col-6">
+          <input type="text" class="groupfield w-input" maxlength="256" data-name="עיר מגורים" placeholder="{{dataService.getText('hometown')}}"
+            required="" [(ngModel)]="dataService.user.city">
+        </div>
+
+      </div>
+
+      <div class="column-13 w-col w-col-6">
+        <a (click)="saveProfile()" class="blue-but w-button">{{dataService.getText('profileSave')}}</a>
+      </div>
+
+
+      <div *ngIf="ableToCreateGroup() && isSocialSite && false" class="butleft">
+        <a (click)="createGroup()" class="blue-but w-button">{{dataService.getText('profileCreateGroup')}}</a>
+      </div>
+    </div>
+    <div *ngIf="group">
+      <group [group]="group"></group>
+    </div>
+    <div *ngIf="notifications && notifications.length" class="mission-1st notifications">
+      <div class="notifi w-row">
+        <div class="column-12 w-clearfix w-col w-col-1">
+          <h1 class="heading-2 dark comp">{{dataService.getText('subtitlePro')}}</h1>
+        </div>
+        <div class="column-2 w-col w-col-11"></div>
+      </div>
+      <div class="paragraph-2" *ngFor="let notification of notifications">
+        <div>{{notification.createdAt | date: 'dd.MM.yyyy'}}: {{notification.text}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<main-footer [showPartners]="true"></main-footer>

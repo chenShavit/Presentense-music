@@ -1,0 +1,33 @@
+.answer-but.backbutton a{
+    margin: 0 auto;
+}
+
+.butleft.answer-but.backbutton .blue-but.w-button{
+    margin: 0;
+    margin-left: 10px;
+    margin-top: -50px;
+}
+
+.butleft.answer-but.backbutton .blue-but.w-button.video-back{
+    margin: unset;
+    margin-left: unset;
+    margin-top: unset;
+}
+
+.video-back-container{
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:480px){
+    .butleft.answer-but.backbutton{
+        margin-top: 0;
+    }
+    .butleft.answer-but.backbutton .blue-but.w-button{
+        margin: 0 auto;
+    }
+
+    .butleft.answer-but.backbutton .blue-but.w-button.video-back{
+        margin: 0 auto;
+    }
+}

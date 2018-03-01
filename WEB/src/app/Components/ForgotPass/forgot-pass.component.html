@@ -1,0 +1,16 @@
+<main-header></main-header>
+<div class="section light-regular">
+  <div class="profile-container w-container">
+    <div class="title-row personal w-row">
+      <div class="column-15 w-clearfix w-col w-col-11">
+        <h1 class="heading-2 dark comp">{{dataService.getText('forgotPasswordTitle')}}</h1>
+        <h4 class="heading-2 dark comp">{{dataService.getText('forgotPasswordSubtitle')}}</h4>
+      </div>
+    </div>
+    <div class="w-row forgot-password-details">
+      <input type="email" class="groupfield w-input" maxlength="256" [(ngModel)]="user.email" autofocus="true" placeholder="כתובת מייל"
+        required="">
+      <a (click)="forgotPassword()" class="blue-but w-button" [ngClass]="{'disabled': !user.email || clicked }">{{dataService.getText('sendButton')}}</a>
+    </div>
+  </div>
+  <main-footer [showPartners]="true"></main-footer>

@@ -1,0 +1,14 @@
+<main-header></main-header>
+  <div class="section light">
+    <div class="container-4 w-container">
+      <div class="div-center">
+        <h1 class="heading-2 dark comp">{{dataService.getText(dataService.challengesData[dataService.type].about.title)}}</h1>
+        <p class="paragraph light-copy">{{dataService.getText(dataService.challengesData[dataService.type].about.text)}}</p>
+        <div class="row-5 w-row">
+          <div class="column-2-but w-clearfix w-col w-col-6"><a href="#" class="smallbut-copy w-button">{{dataService.getText(dataService.challengesData[dataService.type].about.buttonRight)}}</a></div>
+          <div class="column-6 w-col w-col-6"><a href="#" class="smallbut-2 w-button">{{dataService.getText(dataService.challengesData[dataService.type].about.buttonLeft)}}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<main-footer [showPartners]="true"></main-footer>

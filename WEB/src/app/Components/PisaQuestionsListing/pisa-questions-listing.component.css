@@ -1,0 +1,15 @@
+.pisa-questions-container .rightp .div-block-4p{
+  float:left;
+}
+
+.pisa-questions-container .div-block-4p{
+  min-width: 50%;
+  max-width: 50%;
+  margin-bottom: 20px;
+  height: 342px;
+}
+
+.pisa-questions-container .w-col-6 {
+    width: 50%;
+    max-width: 50%;
+}

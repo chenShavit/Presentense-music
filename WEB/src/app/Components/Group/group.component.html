@@ -1,0 +1,41 @@
+<div class="section light group-section" *ngIf="group">
+  <div class="">
+    <div class="group">
+      <div class="">
+        <div class="w-col w-col-1" *ngIf="editGroup">
+          <img src="images/Pencil.png" class="image-5 edit-group" >
+        </div>
+        <div class="w-col w-col-11">
+          <h1 class="heading-2 dark comp" *ngIf="group.users.length>1">
+            {{dataService.getText(dataService.challengesData[dataService.type].group.title)}}
+          </h1>
+        </div>
+      </div>
+      <div class="row-but w-row" *ngIf="group.users.length>1">
+        <div class="w-col w-col-6 group-user" *ngFor="let gu of group.users">
+          <input [(ngModel)]="gu.email" type="text" class="groupfield w-input" placeholder="שם חבר קבוצה" disabled>
+        </div>
+      </div>
+      <div class="row-but w-row" *ngIf="group.users.length>1">
+        <div class="w-clearfix w-col w-col-6">
+          <div class="butleft">
+          </div>
+          <a (click)="leaveGroup()" class="blue-button w-button">{{dataService.getText('group_exit_button')}}</a>
+        </div>
+      </div>
+      <!-- <div class="butleft">
+        <a href="#" class="blue-but w-button">{{dataService.getText(dataService.challengesData[dataService.type].group.button)}}</a>
+      </div> -->
+    </div>
+  </div>
+</div>
+<div class="blue-but w-button" (click)="dataService.copy(viralLink)">להעתקת לינק שיתוף</div>
+<div class="container-linkviral" *ngIf="showVirallink">
+  {{dataService.getText(dataService.challengesData[dataService.type].profile.link)}}<br><br>{{viralLink}}
+</div>
+
+<div *ngIf="showVirallink" class="imageCopy">
+  <img src="images/external-link.png" (click)="dataService.copy(viralLink)"></div>
+<div *ngIf="dataService.showMessagePopup">
+  <pop-for-action [textForPopup]="dataService.alertMessage" [subTextForPopup]="dataService.alertSubMessage"></pop-for-action>
+</div>

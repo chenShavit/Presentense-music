@@ -1,0 +1,118 @@
+
+.container-5p.w-container .image-18{
+
+    margin: -106px auto;
+}
+.paragraph-6p {
+    margin-top: 62px;
+    font-size: 28px;
+    height: 100%;
+}
+
+.button-5p.mq-answer.mq-editable-field.failed .mq-root-block{
+    position: relative;
+}
+.button-5p.mq-answer.mq-editable-field.failed .mq-root-block:before {
+    content: "\274c";
+    position: absolute;
+    left: 0;
+    line-height: 42px;
+    color: red;
+}
+
+
+.pisa-single-question .failed, .pisa-single-question.failed{
+
+    border: 1px solid red;
+}
+
+.paragraph-7p,
+.pisa-checkbox .option,
+.pisa-radio .option{
+    display: block;
+    direction: rtl;
+    font-family: 'Almoni dl aaa', sans-serif;
+    color: #272f38;
+    font-size: 28px;
+    line-height: 31px;
+    text-align: right;
+}
+.button-5p{
+    height: 39px;
+    width: 100px;
+    border-radius: 10px !important;
+    background-color: #dfdbdc !important; 
+    margin-right: 20px;
+    margin-top: 15px;
+    position: initial;
+}
+.groupfield.choices.w-button{
+    display: flex;
+    overflow: hidden;
+    width: 300px;
+    height: 58px;
+    margin-bottom: 10px;
+    align-items: center;
+    border-style: none;
+    background-color: #f4e280;
+    font-family: 'Almoni dl aaa', sans-serif;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .33);
+}
+.column-9p.w-hidden-tiny.w-col.w-col-6{
+    float: right;
+}
+.w-col-6 .button-4p.sharepp.sendp.bottomp{
+    top: 100px;
+    width: 230px;
+}
+
+
+.container-5p{
+}
+.pisa-checkbox,
+.pisa-radio {
+    direction: rtl;
+    margin-top: 30px;
+}
+
+.pisa-checkbox .option .checkbox-image .checked {
+    margin-right: -1.8px;
+    margin-left: -2px;
+}
+
+.paragraph-7p {
+    margin-top: 20px;
+}
+
+.pisa-single-question .numbers {
+    direction: rtl;
+    display: inline-block;
+    float: right;
+    padding-left: 10px;
+    font-family: 'Almoni dl aaa', sans-serif;
+    color: #272f38;
+    font-size: 28px;
+    padding-top: 4px;
+}
+
+::ng-deep .mq-answer{
+  border:1px solid gray !important;
+  border-radius: 4px !important;
+}
+
+.container-5p.w-container.right-side-pisa{
+    margin-top: 0;
+}
+
+@media screen and (max-width:480px){
+    
+
+    .butleft.answer-but.backbutton.ng-star-inserted.pisa-send{
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}

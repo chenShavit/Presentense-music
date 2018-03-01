@@ -1,0 +1,65 @@
+<div class="column-9p w-col w-col-6 pisa">
+  <div class="container-5p w-container right-side-pisa">
+    <h1 *ngIf="pisaQuestion" class="heading-6p">{{pisaQuestion.title}}</h1>
+    <p *ngIf="pisaQuestion" class="paragraph-6p" [innerHTML]="pisaQuestion.description | image">
+    </p>
+    <div id="ggb-element"></div> 
+  </div>
+</div>
+<div class="row-8p w-row">
+  <div class="column-10p w-clearfix w-col w-col-6 pisa-questions">
+
+    <div *ngIf="pisaQuestion" class="column-10 w-clearfix w-col w-col-6p">
+      <h1 class="heading-8p">{{dataService.getText(dataService.challengesData[dataService.type].titleAnswerPisa)}}</h1>
+      
+      <div class="pisa-single-question" *ngFor="let ques of pisaQuestion.questions; let i = index" [attr.data-id]="ques._id" [class.text]="ques.type == 1" [class.multi]="ques.type == 2" [class.single]="ques.type == 3">
+          <span class="numbers">
+              {{i+1 + '.'}}
+          </span>
+        <!-- Input -->
+        <div *ngIf="ques.type == 1" class="paragraph-7p" [innerHTML]="ques.content | input"></div>
+        <!-- Multi Select -->
+        <div *ngIf="ques.type == 2" class="pisa-checkbox paragraph-7p">
+          <div class="paragraph-7p" [innerHTML]="ques.content"></div>
+          <div *ngFor="let ans of ques.multi_options" class="option">
+            <span (click)="ans.checked = !ans.checked;addRemoveCheckboxAnswer($event,ans);" class="checkbox-image">
+              <img class="checked" *ngIf="ans.checked" src="/images/pisa-multi-check.svg">
+              <img class="unchecked" *ngIf="!ans.checked" src="/images/pisa-multi-uncheck.svg">
+            </span> <span [innerHTML]="ans.text">
+
+              </span>
+          </div>
+        </div>
+        <!-- Single Select -->
+        <div *ngIf="ques.type == 3" class="pisa-radio paragraph-7p">
+          <div class="paragraph-7p" [innerHTML]="ques.content"></div>
+          <div *ngFor="let ans of ques.single_options">
+            <span (click)="ques.selected = ans">
+              <img *ngIf="ques.selected == ans" src="/images/pisa-single-check.svg">
+              <img *ngIf="ques.selected != ans" src="/images/pisa-single-uncheck.svg">
+            </span>
+            <span [innerHTML]="ans.text">
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column-9p w-col w-col-6">
+      <div class="row-9p w-row">
+        <div class="column-11p w-clearfix w-col w-col-6">
+          <a (click)="answered()" class="button-4p sharepp sendp bottomp w-button">{{dataService.getText('sendButton')}}</a>
+        </div>
+        <div class="w-col w-col-6">
+          <!-- <span #mathAnswer>x= </span> -->
+          <!-- <span #mathAnswers>x=1 </span>
+            <span #mathAnswers>x=3 </span> -->
+            <!-- <span #mathAnswers>x=2 </span> -->
+          
+          <!-- <span class="mathAnswer">x= </span> -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

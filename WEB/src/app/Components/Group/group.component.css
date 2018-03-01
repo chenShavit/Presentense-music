@@ -1,0 +1,146 @@
+.section,
+.w-container {
+    background: transparent;
+    box-shadow: none;
+}
+
+.group-user {
+    float: right;
+}
+.container-linkviral{
+    transition: opacity 0.3s;
+    background-image: url("/images/rectangle.png");
+    height: 118px;
+    float: right;
+    padding-top: 42px;
+    border-radius: 16px;
+    margin-top: -336px;
+    margin-right: 400px;
+    font-family: 'Almoni dl aaa', sans-serif;
+    font-size: 25px;
+
+}
+.show-linkviral{
+    opacity: 1;
+    z-index: 10;
+}
+.container-linkviral {
+    transition: opacity 0.3s;
+    background-image: url("/images/rectangle.png");
+    height: 118px;
+    width: 1000px;
+    background-repeat: no-repeat;
+    float: right;
+    padding-top: 30px;
+    border-radius: 16px;
+    margin-top: -400px;
+    padding-right: 340px;
+    margin-right: 33px;
+    direction: rtl;
+}
+.imageCopy img{
+    margin-left: -80px;
+    margin-top: -723px;
+}
+.w-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 866px;
+}
+.heading-2.dark.comp {
+    display: block;
+    margin-bottom: 28%;
+    width: 505px;
+    float: right;
+    clear: right;
+    text-align: right;
+}
+.group-user[_ngcontent-c12] {
+    /* float: right; */
+    margin-top: 30px;
+}
+.w-input[disabled], .w-select[disabled], .w-input[readonly], .w-select[readonly], fieldset[disabled] .w-input, fieldset[disabled] .w-select {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+    width: 387px;
+}
+.blue-but {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 87px;
+    margin-bottom: 0%;
+    margin-bottom: 20%;
+    margin-left: -30px;
+    float: none;
+    clear: none;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: #272d38;
+    box-shadow: inset 0 -8px 0 0 rgba(3, 3, 3, .17);
+    -webkit-transition: -webkit-filter 200ms ease;
+    transition: -webkit-filter 200ms ease;
+    transition: filter 200ms ease;
+    transition: filter 200ms ease, -webkit-filter 200ms ease;
+    direction: rtl;
+    font-family: 'Almoni dl aaa', sans-serif;
+    color: #fff;
+    font-size: 30px;
+}
+.blue-button{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 337px;
+    height: 87px;
+    margin-bottom: 10%;
+    float: none;
+    clear: none;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 13px;
+    background-color: #272d38;
+    box-shadow: inset 0 -8px 0 0 rgba(3, 3, 3, .17);
+    -webkit-transition: -webkit-filter 200ms ease;
+    transition: -webkit-filter 200ms ease;
+    transition: filter 200ms ease;
+    transition: filter 200ms ease, -webkit-filter 200ms ease;
+    direction: rtl;
+    font-family: 'Almoni dl aaa', sans-serif;
+    color: #fff;
+    font-size: 45px;
+    font-weight: 900;
+    text-shadow: 1px 1px 0 hsla(0, 0%, 100%, .2);
+}
+
+
+@media screen and (max-width:480px){
+    .blue-but.w-button {
+        margin: 0 auto;
+    }
+
+    .image-5.edit-group{
+        top:34px
+    }
+
+     .heading-2.dark.comp[_ngcontent-c3]{
+        width:initial;
+    }
+}

@@ -1,0 +1,176 @@
+<main-header></main-header>
+
+<style>
+  .header-mobile-music {
+    z-index: 501 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+  
+  .header-mobile-music .disconnect {
+    display: inline-block;
+  }
+  
+  .header-mobile-music .navigation-menup {
+    transform: scaleY(0);
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    transform-origin: 0 0;
+  }
+  
+  .header-mobile-music .navigation-menup.open {
+    transform: scaleY(1);
+  }
+  
+  @media (max-width: 480px) {
+    .header-mobile-music {
+      display: initial;
+      background-color: #000;
+    }
+    .pnavigation-link.pwhite {
+      display: inline-block !important;
+    }
+  }
+</style>
+<div *ngIf="!dataService.showPopupSign && !dataService.showPopupContac" data-collapse="medium" data-animation="default" data-duration="400"
+  class="navigation-barpp darkpp w-nav header-mobile-music">
+
+  <div (click)="toggleMenu()" id="hamburger" class="hamburger-buttonp whitep w-nav-button">
+    <div class="picon w-icon-nav-menu"></div>
+  </div>
+  <nav role="navigation" class="navigation-menup w-nav-menu">
+    <a *ngIf="dataService.user.isEmpty() == false;" (click)="dataService.logOut();analyticsEvent('התנתק')" class="pnavigation-link pwhite w-nav-link">
+    {{dataService.getText('disConnect')}}
+  </a>
+    <a (click)="dataService.showContacPopup();analyticsEvent('צור קשר')" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText('contactUs')}}
+  </a>
+
+    <a *ngIf="dataService.user.isEmpty() == false;" [routerLink]="['/question-flow',dataService.type]" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText(dataService.challengesData[dataService.type].nav.comp)}}
+    </a>
+
+    <!-- <a (click)="dataService.changeLanguage();analyticsEvent('החלפת שפה')" class="pnavigation-link pwhite w-nav-link">
+      עברית\عربيه
+      </a> -->
+    <a *ngIf="dataService.user.isEmpty() == true && !hidesignup" (click)="dataService.showSignupPopup()" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText('enter')}}
+    </a>
+    <a *ngIf="dataService.user.isEmpty()==false;" (click)="analyticsEvent('פרופיל')" [routerLink]="['/profile']" class="pnavigation-link pwhite w-nav-link">
+    {{dataService.getText('private')}}
+    </a>
+  </nav>
+</div>
+
+
+
+<div [ngClass]="{'soccer':dataService.type=='1', 'fashion': dataService.type=='2', 'tech': dataService.type=='3', 'social':dataService.type=='4', 'music': dataService.type=='5'}">
+  <div class="section dark" id="competition">
+    <div class="h w-container">
+      <div class="div-center">
+        <p data-w-id="cf5fe0d4-d1a3-0468-874d-6b49b699e340" class="paragraph light" [innerHTML]="dataService.getText(dataService.challengesData[dataService.type].start_text)"></p>
+        <a (click)="analyticsEvent('יאללה לפריז')" [routerLink]="['']" fragment="start" data-w-id="f8f47435-7a22-35dd-9a3e-cfab646044d2"
+          class="bigbut w-button">{{dataService.getText(dataService.challengesData[dataService.type].startButton)}}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="section light prasim-section" id="awardes">
+    <div class="container-2 w-container">
+      <h1 class="heading-2 dark">
+        {{dataService.getText(dataService.challengesData[dataService.type].prasim)}}
+      </h1>
+      <div class="column-mobile">
+        <div class="prasim">
+          <img src="/images/Layer-9.png" class="image-11 prasimobile">
+          <h1 class="heading-3">
+            {{dataService.getText(dataService.challengesData[dataService.type].firstPrize.title)}}
+            <br>
+            <span class="text-span-7 w-hidden-main">
+              {{dataService.getText(dataService.challengesData[dataService.type].firstPrize.text)}}
+            </span>
+          </h1>
+        </div>
+        <div class="prasim prasim-flipped w-hidden-medium w-hidden-small w-hidden-tiny">
+          <h3 class="flipped-text">{{dataService.getText(dataService.challengesData[dataService.type].firstPrize.smalltext1)}}</h3>
+          <img class="prize-image first-prize" src="/images/music-prize-plane.png" alt="">
+          <h3 class="flipped-text"> {{dataService.getText(dataService.challengesData[dataService.type].firstPrize.smalltext2)}}</h3>
+          <!--<h1 class="flipped-text" [innerHTML]="dataService.getText(dataService.challengesData[dataService.type].firstPrize.flippedText)"></h1>-->
+        </div>
+      </div>
+      <div class="row-2 w-row">
+        <div class="column-3 third-section w-col w-col-6">
+          <div class="prasim">
+            <img src="/images/Layer-11.png" class="image-11 prasimobile">
+            <h1 class="heading-3">
+              {{dataService.getText(dataService.challengesData[dataService.type].thirdPrize.title)}}
+              <br>
+              <span class="text-span-7 w-hidden-main">
+                {{dataService.getText(dataService.challengesData[dataService.type].thirdPrize.text)}}
+              </span>
+            </h1>
+          </div>
+          <div class="prasim prasim-flipped w-hidden-medium w-hidden-small w-hidden-tiny">
+            <h3 class="flipped-text">{{dataService.getText(dataService.challengesData[dataService.type].thirdPrize.smalltext1)}}</h3>
+            <img class="prize-image third-prize" src="/images/music-prize-speaker.png" alt="">
+            <h3 class="flipped-text"> {{dataService.getText(dataService.challengesData[dataService.type].thirdPrize.smalltext2)}}</h3>
+            <!--<h1 class="flipped-text" [innerHTML]="dataService.getText(dataService.challengesData[dataService.type].thirdPrize.flippedText)"></h1>-->
+          </div>
+        </div>
+        <div class="column-3rd w-col w-col-6">
+          <div class="prasim">
+            <img src="/images/Layer-10.png" class="image-11 prasimobile">
+            <h1 class="heading-3">
+              {{dataService.getText(dataService.challengesData[dataService.type].secondPrize.title)}}
+              <br>
+              <span class="text-span-7 w-hidden-main">
+                {{dataService.getText(dataService.challengesData[dataService.type].secondPrize.text)}}</span>
+            </h1>
+          </div>
+          <div class="prasim prasim-flipped w-hidden-medium w-hidden-small w-hidden-tiny">
+            <h3 class="flipped-text">{{dataService.getText(dataService.challengesData[dataService.type].secondPrize.smalltext1)}}</h3>
+            <img class="prize-image second-prize" src="/images/music-prize-headphones.png" alt="">
+            <h3 class="flipped-text"> {{dataService.getText(dataService.challengesData[dataService.type].secondPrize.smalltext2)}}</h3>
+            <!--<h1 class="flipped-text" [innerHTML]="dataService.getText(dataService.challengesData[dataService.type].secondPrize.flippedText)"></h1>-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="section dark last" id="start">
+    <div class="container-8 w-container">
+      <h1 class="heading-2 light-title">{{dataService.getText(dataService.challengesData[dataService.type].defaultStage.title)}}</h1>
+      <div class="div-center">
+        <p class="paragraph light-1st" [innerHTML]="dataService.getText(dataService.challengesData[dataService.type].defaultStage.question)"></p>
+
+        <div class="row-but w-row">
+          <div class="w-col w-col-6 answer-option">
+            <a (click)="defaultQuestionClicked()" class="groupfield smallbut w-button">{{dataService.getText(dataService.challengesData[dataService.type].defaultStage.option1)}}</a>
+          </div>
+          <div class="w-col w-col-6 answer-option">
+            <a (click)="defaultQuestionClicked()" class="groupfield smallbut w-button">{{dataService.getText(dataService.challengesData[dataService.type].defaultStage.option2)}}</a>
+          </div>
+        </div>
+        <div class="row-but w-row">
+          <div class="w-col w-col-6 answer-option">
+            <a (click)="defaultQuestionClicked()" class="groupfield smallbut w-button">{{dataService.getText(dataService.challengesData[dataService.type].defaultStage.option3)}}</a>
+          </div>
+          <div class="w-col w-col-6 answer-option">
+            <a (click)="defaultQuestionClicked()" class="groupfield smallbut w-button">{{dataService.getText(dataService.challengesData[dataService.type].defaultStage.option4)}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="footer">
+    <a class="moveo-link" target="_blank" href="http://moveo.group"> <div class="w-clearfix"><img src="images/Poweredby.svg" width="120" class="image-4"></div></a>
+  </div> -->
+</div>
+<main-footer [showPartners]="true"></main-footer>

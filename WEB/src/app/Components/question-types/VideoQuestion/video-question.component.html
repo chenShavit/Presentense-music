@@ -1,0 +1,96 @@
+
+<div class="w-container">
+  <div class="mission-1st">
+    <div class="title-row w-row">
+      <div class="column-7 w-col w-col-1"></div>
+      <div class="">
+        <h1 class="heading-2 dark title">{{stage[dataService.getText(dataService.challengesData[dataService.type].stage.question)]}}</h1>
+        <div *ngIf="dataService.currentLanguage.type == 'he'" class="textForTop">
+
+          <section *ngIf="choosenCardIndex ==0">
+            <p class="paragraph par-align-to-right">מה צריך לעשות?</p>
+            <p class="paragraph par-align-to-right">1. לחשוב על שבעת השירים הכי טובים למסיבת בית</p>
+            <p class="paragraph par-align-to-right">2. להרכיב פלייליסט בכל אתר שתרצו - יו טיוב, סאונד קלאוד, הכל הולך! רק תשימו את הלינק בתיבת הטקסט למטה</p>
+            <p class="paragraph par-align-to-right">3. להרכיב רשימת פלייליסט ולשלוח לנו בקובץ וורד, פאוורפוינט, או פשוט לכתוב בתיבת הטקסט.</p>
+            <p class="paragraph par-align-to-right"> יאללה, לוחצים על פליי!</p>
+          </section>
+
+
+         
+
+        </div>
+        <div *ngIf="dataService.currentLanguage.type == 'ar'" class="textForTop">
+          <section *ngIf="choosenCardIndex ==0">
+            <p class="paragraph par-align-to-right">بطاقة 1- مرحلة 1: من؟</p>
+            <p class="paragraph par-align-to-right">
+              في هذه المرحلة عليكم التفكير ب: لمن توجهون الهدف؟ من هو جمهوركم؟ ممكن أن يكون كل العالم، الدولة، الطلاب في مدرستكم، المعلمين،
+              الأهالي، مرضى السرطان أنفسهم... أي جمهور ممكن ان يكون جمهوركم طول ما بتفسروا المنطق من وراء اختياركم. لحد 200
+              كلمة أو بفيديو لحد 50 ثانية!
+            </p>
+          </section>
+
+
+          <section *ngIf="choosenCardIndex ==1">
+            <p class="paragraph par-align-to-right">بطاقة 2- مرحلة 2: كيف؟</p>
+            <p class="paragraph par-align-to-right">
+              في هذه المرحلة عليكم التفكير كيف تصدرون الهدف للجمهور الذي قمتم باختياره. ممكن أن يكون فيلم وثائقي، فيلم كارتون، بوستر، حملة
+              بسناب تشات، أو أي شيء تريدونه طالما تفسرون لماذا اخترتم هذه الأدوات لجمهوركم. لحد 300 كلمة أو فيديو لحد دقيقة
+              ونص!
+            </p>
+          </section>
+
+
+          <section *ngIf="choosenCardIndex ==2">
+            <p class="paragraph par-align-to-right">بطاقة 3- مرحلة 3: ماذا؟</p>
+            <p class="paragraph par-align-to-right">
+
+              في هذه المرحلة عليكم التفكير ما هو الهدف الذي تريدون تمريره؟ نعلم الآن ما هو جمهور الحملة وكيف سيتم تمرير الهدف، لكن ماذا
+              سيكون بالضبط؟ ما هو الشعار؟ السيناريو؟ الهاشتاغ؟ العنوان؟ كل شيء ممكن والسماء هي الحدود طالما تفسرون لماذا
+              اخترتم هذا الهدف. لحد 300 كلمة أو فيديو لحد دقيقة ونص!
+
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!--<p class="paragraph light-copy" style="white-space: pre-wrap;">
+      {{stage[dataService.getText(dataService.challengesData[dataService.type].stage.stage_details)]}}
+      </p>-->
+    <!-- <div class="image-big">
+      <iframe [src]="videoUrl()" *ngIf="stage && stage.video_url"></iframe>
+    </div> -->
+
+    <ol dir="rtl">
+
+      <li *ngFor="let innerQuestion of stage.video_question; let i=index">
+          <file-upload-question [answerData]="answeredIndexes['1'][choosenCardIndex] ? answeredIndexes['1'][choosenCardIndex][i] : null" [hideSend]="true" #q (answer)="questionAnswered($event,innerQuestion)" *ngIf="innerQuestion.video_type == 'file'"
+          [stage]="innerQuestion">
+        </file-upload-question>
+        <question-with-text [answerData]="answeredIndexes['1'][choosenCardIndex] ? answeredIndexes['1'][choosenCardIndex][i] : null" [hideSend]="true" #q (answer)="questionAnswered($event,innerQuestion)" *ngIf="innerQuestion.video_type == 'free_text'"
+          [stage]="innerQuestion">
+        </question-with-text>
+
+        <multi-question [hideSend]="true" #q (answer)="questionAnswered($event,innerQuestion)" *ngIf="innerQuestion.video_type == 'multiselect'"
+          [stage]="innerQuestion">
+
+        </multi-question>
+
+        <single-question [hideSend]="true" #q (answer)="questionAnswered($event,innerQuestion)" *ngIf="innerQuestion.video_type == 'select'"
+          [stage]="innerQuestion">
+        </single-question>
+
+       
+      </li>
+
+    </ol>
+
+    <div class="butleft answer-but">
+      <a (click)="answered()" class="blue-but w-button send-button" [ngClass]="{'disabled' : shouldDisable()}">{{dataService.getText('sendButton')}}</a>
+    </div>
+  </div>
+</div>
+
+<!--
+<div style="color:black;">
+  {{stage | json}}
+</div>-->

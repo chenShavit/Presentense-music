@@ -1,0 +1,109 @@
+<div class="w-container">
+  <div class="mission-1st">
+    <div class="title-row w-row">
+      <div class="column-7 w-col w-col-1"></div>
+      <div class="">
+        <h1 class="heading-2 dark title">
+          {{stage[dataService.getText(dataService.challengesData[dataService.type].stage.question)]}}
+        </h1>
+      </div>
+    </div>
+    <p class="paragraph light-copy" style="white-space: pre-wrap;">{{stage[dataService.getText(dataService.challengesData[dataService.type].stage.stage_details)]}}</p>
+    <div class="image-big">
+      <img src="{{stage.image}}" sizes="100vw">
+    </div>
+
+    <form class="file-upload-form">
+      <input [attr.disabled]="uploading ? true : null" (change)="onFileChange($event)" type="file" hidden id="file_answer" name="file_answer">
+      <label class="file-upload-label" for="file_answer" *ngIf="!file">
+          <span class="upload-btn">
+              
+            {{ answers.name || answerData || dataService.getText('uploadFileButtonText') }}
+            </span>
+
+      </label>
+      <div class="file-name" *ngIf="file && file.name">{{file.name}}</div>
+      <div *ngIf="uploading" class="lds-css ng-scope">
+        <div style="width:100%;height:100%;" class="lds-disk">
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <style type="text/css">
+          .lds-css {
+            z-index: 9;
+            margin-top: -4px;
+            display: inline-flex;
+            line-height: 51px;
+            margin-right: 20px;
+          }
+          
+          @keyframes lds-disk {
+            0% {
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+          
+          @-webkit-keyframes lds-disk {
+            0% {
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+          
+          .lds-disk>div div:nth-child(1) {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: #272d38;
+          }
+          
+          .lds-disk>div div:nth-child(2) {
+            position: absolute;
+            top: 39.800000000000004px;
+            left: 79px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #ffffff;
+            -webkit-animation: lds-disk 1s linear infinite;
+            animation: lds-disk 1s linear infinite;
+            -webkit-transform-origin: 21px 60.199999999999996px;
+            transform-origin: 21px 60.199999999999996px;
+          }
+          
+          .lds-disk {
+            width: 51px !important;
+            height: 51px !important;
+            -webkit-transform: translate(-25.5px, -25.5px) scale(0.255) translate(25.5px, 25.5px);
+            transform: translate(-25.5px, -25.5px) scale(0.255) translate(25.5px, 25.5px);
+            margin: 0 auto;
+            top: 350px;
+          }
+        </style>
+
+      </div>
+    </form>
+
+    <div class="butleft answer-but" *ngIf="!hideSend">
+      <a (click)="answered()" class="blue-but w-button" [ngClass]="{'disabled' : shouldDisable()}">
+        {{dataService.getText(dataService.challengesData[dataService.type].stage.sendButton)}}
+      </a>
+    </div>
+  </div>
+</div>
+
+<pop-for-action class="success-popup" *ngIf="dataService.showMessagePopup" [textForPopup]="'קובץ הועלה בהצלחה!'"></pop-for-action>

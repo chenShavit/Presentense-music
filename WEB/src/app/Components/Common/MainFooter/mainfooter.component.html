@@ -1,0 +1,20 @@
+<div class="footer accent-main">
+    <div class="container-first-footer w-container">
+      <div *ngIf="showPartners" class="footer-container">
+          <h1 class="heading-2-copy">{{dataService.getText('accociated')}}</h1>
+          <div class="row-7 w-row" >
+            <div class="column-16 w-col keren">
+              <img src="images/Keren.png" srcset="images/Keren-p-500.png 500w, images/Keren-p-800.png 800w, images/Keren-p-1080.png 1080w, images/Keren.png 1364w" sizes="(max-width: 479px) 96vw, (max-width: 767px) 29vw, (max-width: 991px) 229.328125px, 299.984375px" class="image-16 smallicon trump">
+            </div>
+            
+           
+            <div *ngIf="isSocialSite" class="column-16 w-col"><img src="images/social-logo.png" class="image-15 smallicon"></div>
+          </div>
+      </div>
+     <a class="moveo-link" target="_blank" href="http://moveo.group"> <div class="w-clearfix"><div class="footer-text">Powered by</div><img src="images/Moveo-White.png" width="120" class="image-4"></div></a>
+   
+      <div>
+          <a [routerLink]="['/terms']" class="terms-link">{{dataService.getText('terms')}}</a>
+          <a href="http://www.facebook.com/userid" class="social-icon-link w-inline-block"></a><a href="http://www.twitter.com/userid" class="social-icon-link w-inline-block"></a><a href="http://www.linkedin.com/userid" class="social-icon-link w-inline-block"></a><a class="social-icon-link w-inline-block"></a></div>
+    </div>
+  </div>

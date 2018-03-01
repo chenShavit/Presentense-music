@@ -1,0 +1,53 @@
+.not-yet-sign-text {
+    -webkit-transform: rotate(13.5deg);
+    -moz-transform: rotate(13.5deg);
+    -ms-transform: rotate(13.5deg);
+    -o-transform: rotate(13.5deg);
+    font-size: 4vw;
+    left: 39vw;
+    position: absolute;
+    text-align: center;
+    top: 29%;
+    line-height: 4vw;
+    width: 22vw;
+    color: white;
+    font-family: 'Almoni dl aaa', sans-serif;
+    text-shadow: 5px 5px 0 #3b4651;
+    font-weight: 900;
+}
+
+img {
+    width: 30%;
+}
+
+.div-center {
+    position: relative;
+}
+.subtext {
+    font-size: 2.5vw;
+    margin-left: 35vw;
+    text-align: center;
+    width: 30vw;
+    font-family: 'Almoni dl aaa', sans-serif;
+    font-weight: 900;
+    direction: rtl;
+    line-height: 50px;
+}
+@media (max-width:417px)
+{
+     .div-center {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        /* display: flex; */
+        margin-top: 114%;
+        text-align: center;
+    }
+    .subtext {
+        font-size: 7.5vw;
+        margin-left: 35vw;
+        text-align: center;
+        width: 34vw;
+    }
+   
+}

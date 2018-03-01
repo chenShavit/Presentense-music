@@ -1,0 +1,32 @@
+<div dir="rtl" class="modal-body pisa-container">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">שאלה:</label>
+        <div class="col-sm-7">
+            <select name="pisa_level" value="something" class="form-control pisa-question-selection">
+                <option value="">בחר רמת קושי</option>
+                <option value="easy">קל</option>
+                <option value="medium">בינוני</option>
+                <option value="hard">קשה</option>
+            </select>
+        </div>
+        <span class="col-sm-3 text-icon-container remove-pisa-question-row" style="cursor: pointer;">
+            <i class="fa fa-minus minus-icon icon-text-maring " aria-hidden="true"></i>
+            הסר שאלה
+        </span>
+    </div>
+</div>
+
+<script>
+    $('.remove-pisa-question-row').click(function (e) {
+        e.target.parentElement.parentElement.remove()
+    });
+
+    function refillData() {
+        stage.pisa_questions_difficulty.forEach((element, index, stage) => {
+            $($('.pisa-question-selection')[index]).val(element)
+        });
+    }
+
+    if (stage.pisa_questions_difficulty)
+    refillData();
+</script>

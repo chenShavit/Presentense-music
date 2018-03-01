@@ -1,0 +1,129 @@
+.section.progress{
+  display: block;
+  z-index: -1;
+}
+
+.div-block-3.w-clearfix {
+  flex-direction: row-reverse;
+}
+
+.heading-4 {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: initial;
+  right: 43%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.heading-4.visited {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-right: -70%;
+  margin-top: 30px;
+}
+
+.heading-4.current-number {
+  right: 35%;
+}
+
+.one-fix {
+  padding-left: 0.25vw;
+}
+
+.heading-4.current-number{
+  right: 35%;
+  top: 70px;
+  color: white !important;
+}
+.heading-4 {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+}
+.progress-last-crown {
+  position: absolute;
+    top: -53px;
+  margin-right: 13px;
+}
+.step-container-images{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  direction: rtl;
+}
+
+.info-bubble {
+  opacity: 0;  
+  transition: opacity 0.5s;
+  position: absolute;
+  top: -88px;
+}
+.div-block-4 {
+  z-index: 999;
+}
+
+.info-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -35%);
+  margin-left: 0;
+  font-family: 'Almoni dl aaa', sans-serif;
+  font-size: 25px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.info-container .info {
+  margin-right: 10px;
+  position: relative;
+}
+
+.step-container-images .info-container:hover .info-bubble {
+  opacity: 1;
+}
+
+.info-img-container{
+  vertical-align: sub;
+  cursor: pointer;
+}
+
+.info-bubble.last {
+    top: 66px;
+    left: 101px;
+}
+.info-bubble.last .info-text {
+  margin-right: 0px;
+  top: 70%;
+  left: 55%;
+  right: -50%;
+  padding: 0 10px;
+}
+
+.stage-data-container.pisa-question {
+  left: -8vw !important;
+  position: absolute;
+}
+
+.progress-last-crown-current {
+  position: absolute;
+    top: -41px;
+    margin-right: 72px;
+}
+
+.fixed-top-pisa {
+  top: -36px;
+}
+
+.padding-pisa {
+  padding-top:50px;
+}

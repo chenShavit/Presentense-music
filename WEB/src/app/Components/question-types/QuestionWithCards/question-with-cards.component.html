@@ -1,0 +1,48 @@
+<div class="w-container">
+  <div class="mission-1st">
+    <div class="title-row w-row">
+      <div class="column-7 w-col w-col-1"></div>
+      <div class="column-8 w-clearfix w-col w-col-11">
+        <h1 class="heading-6">{{stage.pass_level_score + ""}}/{{earnedPoints + ""}} {{dataService.getText('pointsAbbreviation')}}</h1>
+      </div>
+    </div>
+    <p class="paragraph par-align-to-right">{{dataService.getText('cardsTextSocial')}}</p>
+    
+   <div (click)="!isDesktop && !showCards_music = showCards_music"  class="mission-div">
+     <img *ngIf="showArrow" src="images/right-arrow.svg">
+    <h1 class="mission-title">{{dataService.getText('social')}}</h1>
+  </div>
+    <div *ngIf="showCards_music"class="video-questions-container-social">
+      <div class="square-but-column w-col" *ngFor="let video of stage.video_question; let i=index" (click)="cardClick(1,i)">
+        <div [ngClass]="{'memphis2': i%3==0, 'memphis3': i%3==1, 'memphis1': i%3==2}">
+          <h1 class="square-but-title">{{video[dataService.getText('videoQuestionText')]}}
+            <br>
+            <span class="text-span-3">{{dataService.getText('socialSecondCardPoints')}}</span>
+          </h1>
+        </div>
+        <div *ngIf="answeredIndexes && answeredIndexes[1][i]" class="done"><img src="/images/approve.png" /></div>
+      </div>
+    </div>
+    <div (click)="!isDesktop && !showCards = showCards " class="mission-div">
+        <img *ngIf="showArrow" src="images/right-arrow.svg">
+    <h1 class="mission-title">{{dataService.getText('socialFirstCardTitle')}}</h1>
+  </div>
+    <div *ngIf="showCards" class="pisa-cards-container">
+      <div  class="square-but-column w-col w-col-4" *ngFor="let pisa of stage.pisa_questions_difficulty; let i=index" (click)="cardClick(0,i)">
+        <div [ngClass]="{'memphis1': i%3==0, 'memphis2': i%3==1, 'memphis3': i%3==2}">
+          <h1 class="square-but-title">{{dataService.getText('socialFirstCardTitle')}}
+            <br>
+            <span class="text-span-3">{{dataService.getText('socialFirstCardPoints')}}</span>
+          </h1>
+        </div>
+        
+        <div *ngIf="answeredIndexes && answeredIndexes[0][i]" class="done"><img src="/images/approve.png" /></div>
+      </div>
+    </div>
+    <div class="butleft answer-but">
+      <a [ngClass]="{'disabled' : earnedPoints<stage.pass_level_score}" (click)="clickNext()" class="blue-but w-button">
+        {{dataService.getText('cardsButton')}}
+      </a>
+    </div>
+  </div>
+</div>

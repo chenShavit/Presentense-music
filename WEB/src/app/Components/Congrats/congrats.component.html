@@ -1,0 +1,32 @@
+<div class="div-block-3 w-clearfix">
+  <!-- <img src="/images/confetti.png" sizes="(max-width: 1050px) 100vw, 1050px" class="image-19"> -->
+  <div class="conf-cont">
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+    </div>
+  <div class="container-congrats w-container">
+    <div class="mission-1st"></div>
+    <h1 class="heading-5" id=congrats [innerHTML]="dataService.getText('congrats')"></h1>
+  </div>
+  <div class="butleft answer-but">
+    <a (click)="continue()" class="blue-but w-button">{{dataService.getText('congratsContinue')}}</a>
+  </div>
+</div>

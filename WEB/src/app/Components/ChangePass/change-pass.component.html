@@ -1,0 +1,23 @@
+<main-header></main-header>
+<div class="section light-regular">
+    <div class="profile-container w-container">
+      <div class="mission-1st ishi">
+        <div class="title-row personal w-row">
+          <div class="column-15 w-clearfix w-col w-col-11">
+            <h1 class="heading-2 dark comp">{{dataService.getText(dataService.challengesData[dataService.type].passTitle)}}</h1>
+          </div>
+        </div>
+        <div class="row-but w-row">
+          <div class="w-col w-col-6"><input [(ngModel)]="user.current_password" type="password" class="groupfield w-input" required="" placeholder="{{dataService.getText('currentPassword')}}"></div>
+        </div>
+        <div class="row-but w-row">
+          <div class="w-col w-col-6"><input [(ngModel)]="user.new_password" type="password" class="groupfield w-input" required="" placeholder="{{dataService.getText('newPassword')}}"></div>
+        </div>
+        <div class="row-but w-row">
+          <div class="w-col w-col-6"><input [(ngModel)]="user.confirm_password" type="password" class="groupfield w-input" required="" placeholder="{{dataService.getText('confirmPassword')}}"></div>
+        </div>
+        <div class="butleft"><a (click)="changePassword()" class="blue-but w-button" [ngClass]="{'disabled': !(user.current_password && user.new_password && user.confirm_password) }">{{dataService.getText('changePassword')}}</a></div>
+      </div>
+    </div>
+  </div>
+<main-footer [showPartners]="true"></main-footer>

@@ -1,0 +1,94 @@
+.pop-solid {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 100%;
+  padding-top: 85px;
+  background-color: rgba(39, 45, 56, .7);
+}
+.img-19{
+  bottom: 29px;
+  }
+.div-block-2 .image-8{
+  bottom: 5px;
+  right: 20px;
+  height: 35px;
+}
+.pop-up {
+    display: block;
+    width: 695px;
+    height: 550px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 80px 149px 149px;
+    border-radius: 13px;
+    background-image: url(/images/Dark-BG.png);
+    background-position: 0px 0px;
+    background-size: auto;
+
+}
+
+.check-img{
+  width: 31px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.text-span {
+  cursor: pointer;
+}
+
+.terms-section {
+  margin-top: -25px;
+  margin-right: -25px;
+}
+
+.exist-user{
+  font-family: 'Almoni dl aaa', sans-serif;
+  color: #ffffff;
+  font-size: 19px;
+  background-image: url(/images/Dark-BG.png);
+  text-decoration: underline;
+  cursor: pointer;
+  position: absolute;
+  margin-top: -45px;
+  margin-left: 6px;
+}
+
+.image-9 {
+  cursor: pointer;
+}
+
+.pop-solid .heading-2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  margin-top: -27px;
+  margin-left: 39px;
+  font-size: 33px !important;
+}
+
+
+
+@media (max-width: 417px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .groupfield {
+    height: 50px !important;
+  }
+  .popup-but {
+    height: 50px;
+    line-height: 26px !important;
+  }
+  .exist-user {
+    margin-top: 75px;
+  }
+}

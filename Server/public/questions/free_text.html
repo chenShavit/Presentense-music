@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label class="col-sm-2 control-label">שאלה</label>
+    <div class="col-sm-10">
+        <input id="free-text-question" type="text" name="question_text" class="form-control">
+    </div>
+</div>
+
+<script>
+    function refillData() {
+        // if (currentVideoIteration)
+        //     $('#free-text-question').attr('name', 'question_text' + currentVideoIteration);
+        if (stage.video_question && stage.video_question.length) {
+            if (stage.video_question[currentVideoIteration].video_type === 'free_text'){
+                console.log('inner condition');
+                $('#free-text-question').val(stage.video_question[currentVideoIteration].question_text);
+            }
+        }
+        else
+            $('#free-text-question').val(stage.question_text)
+    }
+
+    refillData();
+</script>

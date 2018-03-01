@@ -1,0 +1,64 @@
+<div data-collapse="medium" data-animation="over-left" data-duration="400" class="navigation-bar dark w-nav header-container music"
+  >
+  <div class="nav-menu-container">
+    <nav role="navigation" class="navigation-menu w-nav-menu">
+      <a *ngIf="dataService.user.isEmpty()==false;" (click)="analyticsEvent('פרופיל')" [routerLink]="['/profile']" class="navigation-link white w-nav-link">
+      {{dataService.getText('private')}}
+      </a>
+      <!-- <a [routerLink]="['', dataService.type]" fragment="awardes" class="navigation-link white w-nav-link">{{dataService.getText(dataService.challengesData[dataService.type].nav.prasim)}}</a> -->
+      <a *ngIf="dataService.user.isEmpty() == false;" [routerLink]="['/question-flow',dataService.type]" class="navigation-link white w-nav-link">
+      {{dataService.getText('comp')}}
+      </a>
+    </nav>
+    <!-- <a (click)="dataService.changeLanguage();analyticsEvent('החלפת שפה')" class="navigation-link white w-nav-link">עברית\عربيه</a> -->
+    <div *ngIf="dataService.user.isEmpty() == true && !hidesignup" (click)="dataService.showSignupPopup()" class="navigation-link white w-nav-link">
+      {{dataService.getText('enter')}}
+    </div>
+    <div *ngIf="dataService.user.isEmpty() == false;" (click)="dataService.routeHome();dataService.logOut();analyticsEvent('התנתק')" class="navigation-link white w-nav-link">
+      {{dataService.getText('disConnect')}}
+    </div>
+    <a (click)="dataService.showContacPopup();analyticsEvent('צור קשר')" class="navigation-link white w-nav-link">
+      {{dataService.getText('contactUs')}}
+      </a>
+    <div *ngIf="false" class="hamburger-button white w-nav-button">
+      <div class="w-icon-nav-menu"></div>
+    </div>
+
+
+
+  </div>
+  <div class="w-nav-overlay" data-wf-ignore=""></div>
+  <div class="hero-section" *ngIf="dataService.challengesData[dataService.type]" [ngStyle]="{'background-image':'url('+dataService.challengesData[dataService.type].background + ')'}">
+    <div class="row w-row">
+      <div class="w-col w-col-5 fade-in" *ngIf="dataService.type != '5'">
+        <img src="{{dataService.challengesData[dataService.type].logo}}" width="520" class="image header-button" [routerLink]="['']">
+      </div>
+      <div class="column w-col w-col-7 header-button" [routerLink]="['']">
+        <h1 class="heading enter-from-right-with-fade" [ngClass]="{'headmobile': !globals.isDesktop }">{{dataService.getText(dataService.challengesData[dataService.type].name)}}</h1>
+        <div class="subtitle">
+          <img src="{{dataService.challengesData[dataService.type].imageSubtitle}}" class="image-18">
+          <div class="subtitletext"><a [routerLink]="['']" fragment="start">{{dataService.getText(dataService.challengesData[dataService.type].subtitle)}}</a></div>
+          <div class="end-text" *ngIf="dataService.currentLanguage.type == 'he'">
+              האתגר יסתיים ב29.3 בשעה 20:00
+              </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container-pop-up" [ngClass]="{'show-pop-up': dataService.showPopup}">
+      <popup-connect></popup-connect>
+    </div>
+    <div class="container-pop-up" [ngClass]="{'show-pop-up-sign-up': dataService.showPopupSign}">
+      <popup-sign></popup-sign>
+    </div>
+    <div class="container-pop-up" [ngClass]="{'show-contact-pop-up': dataService.showPopupContac}">
+      <contact-us></contact-us>
+    </div>
+    <div class="container-pop-up" [ngClass]="{'show-confirm-terms-pop-up': dataService.showConfirmTerms}">
+      <popup-confirm-terms></popup-confirm-terms>
+    </div>
+    <div *ngIf="dataService.showGenericPopup">
+      <alert-popup-message [textForPopup]="dataService.alertMessage" [subTextForPopup]="dataService.alertSubMessage" [success]="dataService.genericPopUpIsSuccess"></alert-popup-message>
+    </div>
+  </div>
+</div>

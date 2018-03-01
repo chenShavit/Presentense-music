@@ -1,0 +1,21 @@
+<div class="w-container">
+  <div class="mission-1st">
+    <div class="title-row w-row">
+      <div class="column-7 w-col w-col-1"></div>
+      <div class="column-title w-col w-col-11">
+        <h1 class="heading-2 dark title">{{stage[dataService.getText(dataService.challengesData[dataService.type].stage.question)]}}</h1>
+      </div>
+    </div>
+    <div class="div-single-choice">
+      <p class="paragraph light-1st">{{stage[dataService.getText(dataService.challengesData[dataService.type].stage.stage_details)]}}</p>
+      <div class="row-but w-row">
+        <div *ngFor="let answer of stage[dataService.getText(dataService.challengesData[dataService.type].single.options_single)]" class="w-col w-col-6">
+          <a (click)="selected = answer" class="groupfield choices w-button" [ngClass]="{'choices-pressed': selected == answer}">{{answer}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="butleft answer-multi" *ngIf="!hideSend">
+      <a (click)="answered()" class="blue-but w-button" [ngClass]="{'disabled' : shouldDisable()}">{{dataService.getText('sendButton')}}</a>
+    </div>
+  </div>
+</div>

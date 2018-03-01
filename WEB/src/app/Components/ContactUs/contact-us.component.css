@@ -1,0 +1,31 @@
+.pop-solid {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 100%;
+  padding-top: 85px;
+  background-color: rgba(39, 45, 56, .7);
+}
+.pop-up {
+    display: block;
+    width: 660px;
+    height: 580px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 80px 149px 149px;
+    border-radius: 13px;
+    background-image: none;
+    background-color: #29313a;
+    background-size: auto;
+}
+.pop-solid .heading-2 {
+  color:#ffffff;
+  padding-top: 35px;
+  font-size: 60pt;
+}
+.image-9{
+  cursor: pointer;
+}

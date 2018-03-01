@@ -1,0 +1,13 @@
+{
+    
+    "uid": "Presentense",
+    "append": true,
+    "watch": false,
+    "script": "server.js",
+    "sourceDir": "/home/ubuntu/presentense",
+    "watchDirectory": "/home/ubuntu/presentense/api",
+    //"watchIgnore": "",
+    "logFile" : "/home/ubuntu/presentense/forever/logs/forever_output.log",
+    "outFile" : "/home/ubuntu/presentense/forever/logs/stdout.log",
+    "errFile" : "/home/ubuntu/presentense/forever/logs/stderr.log"
+}

@@ -1,0 +1,12 @@
+node_modules/
+package-lock.json
+**/*.js.map
+**/*.component.js
+**/*.service.js
+**/*.module.js
+**/*.DS_Store
+WEB/src/app/.DS_Store
+WEB/src/app/.DS_Store
+WEB/dist/
+social_dump.tar.gz
+dist

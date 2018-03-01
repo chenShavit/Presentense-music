@@ -1,0 +1,23 @@
+<question-with-text (answer)="questionAnswered($event)" *ngIf="!showSent && stage.question_type == 'free_text'" [stage]="stage"></question-with-text>
+<multi-question (answer)="questionAnswered($event)" *ngIf="!showSent && stage.question_type == 'multiselect'" [stage]="stage"></multi-question>
+<single-question (answer)="questionAnswered($event)" *ngIf="!showSent && stage.question_type == 'select'" [stage]="stage"></single-question>
+<question-with-cards (updateChoosenCardIndex)="updateChoosenCardIndex($event)" (showCard)="showCard($event)" (answer)="questionAnswered($event)"
+  *ngIf="!showSent && stage.question_type == 'missions' && !showVideoCard && !showPisaCard" [stage]="stage" [answeredIndexes]="answeredIndexes"
+  [earnedPoints]="earnedPoints"></question-with-cards>
+
+<video-question [choosenCardIndex]="choosenCardIndex" [answeredIndexes]="answeredIndexes" (answer)="questionAnswered($event)" *ngIf="(!showSent && stage.question_type == 'video') || showVideoCard"></video-question>
+
+<!-- Go over pisa questions.. -->
+<standalone-pisa-question (answer)="questionAnswered($event)" *ngIf="(!showSent && stage.question_type == 'pisa' ) || showPisaCard"
+  [stage]="stage">
+
+</standalone-pisa-question>
+
+<answer-sent *ngIf="showSent"></answer-sent>
+<not-yet *ngIf="showNotYet"></not-yet>
+
+<div class="butleft answer-but backbutton" *ngIf="showPisaCard || showVideoCard" [ngClass]="{'video-back-container':showVideoCard}">
+  <a (click)="showVideoCard=false;showPisaCard=false" class="blue-but w-button" [ngClass]="{'video-back':showVideoCard}">
+    {{dataService.getText(dataService.challengesData[dataService.type].cards.back)}}
+  </a>
+</div>

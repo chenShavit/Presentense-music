@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side nav-sidebar-container" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <!-- <img alt="image" class="img-circle" src="../admin-images/logo.png" /> -->
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">Presentense</strong>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="logo-element">
+                            Presentense
+                        </div>
+                    </li>
+                    <li>
+                        <a href="dashboard">
+                            <i class="fa fa-th-large"></i>
+                            <span class="nav-label">נתונים כלליים</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users">
+                            <i class="fa fa-male"></i>
+                            <span class="nav-label">משתמשים</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contests">
+                            <i class="fa fa-users"></i>
+                            <span class="nav-label">תחרויות</span>
+                        </a>
+                    </li>
+                    <% if (adminUser.type == 'administrator' ) { %>
+                    <li>
+                        <a href="adminUsers">
+                            <i class="fa fa-suitcase"></i>
+                            <span class="nav-label">מנהלים</span>
+                        </a>
+                    </li>
+                    <% } %>
+                    <li class="active">
+                        <a href="translations">
+                            <i class="fa fa-font"></i>
+                            <span class="nav-label">שליטה בתכנים</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-left">
+                        <li>
+                            <a href="login?signout">
+                                התנתק
+                                <i class="fa fa-sign-out"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <div class="ibox-title-text-box">
+                                <h5>תרגום לשלב <%= contest.name %> (<%= contest.category.name %>)</h5>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form id="translations-form" action="/admin/updateTranslations" method="post" class="form-horizontal">
+                                <input type="hidden" hidden value="<%= contest %>" name="questions">
+                                <% for(var i=0; i<contest.stages.length; i++) {%>
+                                    <input type="hidden" hidden value="<%= contest.stages[i].id %>" name="question_id">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                            <%= contest.stages[i].question_text %>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="question_text_arabic" value="<%= contest.stages[i].question_text_arabic %>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                            <%= contest.stages[i].stage_details %>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="stage_details_arabic"><%= contest.stages[i].stage_details_arabic %></textarea>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <a data-toggle="modal" class="btn btn-white" href="javascript:history.back()">חזור</a>                                                
+                                            <input type="submit" class="btn btn-primary" value="עדכן נתונים">
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="pull-right">
+                <a href="http://moveosoftware.com">moveosoftware.com</a>
+            </div>
+            <div class="pull-left">
+                <strong>Powered by</strong> Moveo Group
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- <script>
+        
+        $('#translations-form').on('submit', function (e) {
+            var questions = <%- JSON.stringify(contest) %>;
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/admin/updateTranslations",
+                data: { questions: questions },//$(this).serialize(),
+                success: function (data) {
+                    if (typeof data.redirect == 'string')
+                        window.location.replace(window.location.protocol + "//" + window.location.host + data.redirect);
+                    else
+                        swal({
+                            title: "התרחשה שגיאה בהתחברות",
+                            text: data.error,
+                            type: "error",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "אישור",
+                            closeOnConfirm: false
+                        });
+                }
+            });
+        });
+    </script> -->
+</body>
+
+</html>

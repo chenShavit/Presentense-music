@@ -1,0 +1,38 @@
+<div class="section progress" [ngClass]="{'soccer':dataService.type=='1', 'fashion': dataService.type=='2', 'tech': dataService.type=='3', 'social':dataService.type=='4', 'music': dataService.type=='5', 'padding-pisa':contestStages[0].onPisa}">
+  <div class="div-block-3 w-clearfix">
+    <div class="step-container-images">
+        <div class="div-block-4 info-container">
+            <div class="stage-data-container">
+              <img src="{{getStageBackground(0)}}" class="progress-last">
+              <img class="heading-4 visited" src="/images/checked.png">
+            </div>
+        </div>
+      <div class="div-block-4 info-container" *ngFor="let stage of stages">
+        <span *ngIf="stage.hover_text && stage.index != currentStage" class="info-bubble" [ngClass]="{'last': stage.index == stages.length }">
+          <div class="info-text">
+            {{stage.hover_text}}
+          </div>
+          <span class="info-img">
+            <img src="{{getStageHoverBackground(stage.index)}}" class="progress-hover-image" *ngIf="stage.index != stages.length && stage.index != currentStage">
+            <img src="{{getStageLastHoverBackground(stage.index)}}" class="progress-last-hover-image" *ngIf="stage.index == stages.length && stage.index != currentStage">
+          </span>
+        </span>
+        <div class="stage-data-container">
+          <img src="/images/crown.svg" class="progress-last-crown" *ngIf="stage.index == stages.length && stage.index != currentStage">
+          <img src="/images/crown.svg" class="progress-last-crown-current" *ngIf="stage.index == stages.length && stage.index == currentStage">
+
+          <img src="{{getStageBackground(stage.index)}}" class="progress-last">
+          <h1 *ngIf="stage.index > currentStage || (stage.index == currentStage && !contestStages[0].onPisa)" class="heading-4" [ngClass]="{'current-number': stage.index==currentStage && !contestStages[0].onPisa, 'one-fix': stage.index==1}">
+            {{stage.index + 1}}
+          </h1>
+          <img *ngIf="stage.index < currentStage || (stage.index == currentStage && contestStages[0].onPisa )" class="heading-4 visited" src="/images/checked.png">
+        </div>
+        <div class="stage-data-container pisa-question" *ngIf="stage.pisa_questions_difficulty.length && stage.question_type != 'missions' ">
+            <img src="{{getStageBackgroundForPisa(stage.index)}}">
+            <img *ngIf="stage.index < currentStage" class="heading-4 visited" src="/images/checked.png">
+          </div>
+      </div>
+    </div>
+    <div class="div-block-5" [ngClass]="{'fixed-top-pisa':contestStages[0].onPisa}"></div>
+  </div>
+</div>

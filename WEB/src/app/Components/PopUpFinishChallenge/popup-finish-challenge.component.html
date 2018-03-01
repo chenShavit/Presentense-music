@@ -1,0 +1,83 @@
+<div class="popup-congratualationsp">
+
+  <!-- <img src="images/confetti.png" width="771" srcset="images/confetti-p-800.png 800w, images/confetti.png 1050w" sizes="(max-width: 991px) 100vw, 771px" -->
+    <!-- class="image-21-edgarp"> -->
+    <div class="conf-cont">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+      </div>
+  <div *ngIf="dataService.currentLanguage.type == 'he'" class="div-block-5p mzalatovp">
+    <div class="container-8-edgarp congrats-edgarp w-container">
+      <img src="images/trophy.png" width="92" class="image-19-edgarp">
+      <h1 class="heading-9-edgarp">
+        מזל טוב!<br>סיימת את האתגר
+      </h1>
+      <p class="paragraph-8-edgarp">
+        כדאי להכניס את מספר הפלאפון<br>שלך שנוכל להתקשר אם זכית
+      </p>
+      <div class="row-10p w-row">
+        <div class="w-col w-col-3">
+          <a (click)="analyticsEventSend('סיום האתגר');updateUserPhone();" href="#" class="button-send-edgar w-button">
+            שלח
+          </a>
+        </div>
+        <div class="w-clearfix w-col w-col-9">
+          <input type="text" class="field-edgarim w-input" maxlength="256" [(ngModel)]="dataService.user.phone" autofocus="true" name="Phone-number"
+            data-name="Phone number" placeholder="הזן את מספר הטלפון" id="Phone-number" required="">
+        </div>
+      </div>
+      <a href="#" (click)="analyticsEventClick('שיתוף חברים');copyLink()" class="button-share-edgarp w-button">
+        לאתגר את החבר&#x27;ה
+      </a>
+      <img src="images/ast-share.svg" class="image-23p">
+      <img (click)="goToHome()" src="images/cancel.png" width="25" class="image-edgarp">
+    </div>
+  </div>
+  <div *ngIf="dataService.currentLanguage.type == 'ar'" class="div-block-5p mzalatovp">
+    <div class="container-8-edgarp congrats-edgarp w-container">
+      <img src="images/trophy.png" width="92" class="image-19-edgarp">
+      <h1 class="heading-9-edgarp">
+        حظَا سعيدًا<br>انهيت التحدي
+      </h1>
+      <p class="paragraph-8-edgarp">
+        يفضل ادخاك رقم هاتفك <br>لنتواصل معك في حال ربحت
+      </p>
+      <div class="row-10p w-row">
+        <div class="w-col w-col-3">
+          <a (click)="analyticsEventSend('סיום האתגר');updateUserPhone();" href="#" class="button-send-edgar w-button">
+            عرض
+            </a>
+        </div>
+        <div class="w-clearfix w-col w-col-9">
+          <!-- <input type="text" class="field-edgarim w-input" maxlength="256" [(ngModel)]="dataService.user.phone" autofocus="true" name="Phone-number"
+            data-name="Phone number" placeholder="أدخل رقم الهاتف" id="Phone-number" required=""> -->
+        </div>
+      </div>
+      <a href="#" (click)="analyticsEventClick('שיתוף חברים');copyLink()" class="button-share-edgarp w-button">
+        تحدي أصدقائك
+        </a>
+      <img src="images/ast-share.svg" class="image-23p">
+      <img (click)="goToHome()" src="images/cancel.png" width="25" class="image-edgarp">
+    </div>
+  </div>
+</div>
+
+<!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->

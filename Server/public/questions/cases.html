@@ -1,0 +1,51 @@
+<div class="form-group">
+    <label class="col-sm-2 control-label">שאלה</label>
+    <div class="col-sm-10">
+        <input id="cases-question" type="text" name="question_text" class="form-control">
+    </div>
+</div>
+<div id="multi-answers-container"></div>
+<div class="form-group">
+    <span class="col-sm-2 text-icon-container" id="addNewMultiRow" style="cursor: pointer;">
+        <i class="fa fa-plus plus-icon icon-text-maring " aria-hidden="true"></i>
+        הוסף תשובה
+    </span>
+    <div class="col-sm-6"></div>
+</div>
+
+<script>
+    function addNewMultiRow() {
+        $('#multi-answers-container')
+            .append("<div class=\"form-group\">\
+            <label class=\"col-sm-2 control-label\">תשובה</label>\
+            <div class=\"col-sm-10\">\
+            <input type=\"text\" name=\"cases\" class=\"form-control cases\">\
+            </div>\
+            <span class=\"col-sm-1 text-icon-container removeMultiRow\" style=\"cursor: pointer;\">\
+            <i class=\"fa fa-minus minus-icon icon-text-maring \" aria-hidden=\"true\"></i>\
+            הסר תשובה\
+            </span>\
+            </div>\
+            ");
+
+        $('.removeMultiRow').click(function (e) {
+            e.target.parentElement.remove()
+        })
+    }
+
+    $('#addNewMultiRow').click(addNewMultiRow);
+
+
+    function refillData() {
+        $('#cases-question').val(stage.question_text)
+
+        if (stage.cases) {
+                stage.cases.forEach((element, index, cases) => {
+                    addNewMultiRow();
+                    $($('.cases')[index]).val(element)
+                });
+            }
+    }
+
+    refillData();
+</script>

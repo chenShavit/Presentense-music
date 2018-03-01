@@ -1,0 +1,76 @@
+<main-header></main-header>
+<style>
+  .header-mobile-social {
+    z-index: 501 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+  
+  .header-mobile-social .disconnect {
+    display: inline-block;
+  }
+  
+  .header-mobile-social .navigation-menup {
+    transform: scaleY(0);
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    background-color: #272d38;
+    display: flex;
+    flex-direction: column;
+    transform-origin: 0 0;
+  }
+  
+  .header-mobile-social .navigation-menup.open {
+    transform: scaleY(1);
+  }
+  
+  @media (max-width: 480px) {
+    .header-mobile-social {
+      display: initial;
+    }
+    .pnavigation-link.pwhite {
+      display: inline-block !important;
+    }
+  }
+</style>
+<div *ngIf="!dataService.showPopupSign  && !dataService.showPopupContac" data-collapse="medium" data-animation="default"
+  data-duration="400" class="navigation-barpp darkpp w-nav header-mobile-social">
+
+  <div (click)="toggleMenu()" id="hamburger" class="hamburger-buttonp whitep w-nav-button">
+    <div class="picon w-icon-nav-menu"></div>
+  </div>
+  <nav role="navigation" class="navigation-menup w-nav-menu">
+    <a *ngIf="dataService.user.isEmpty() == false;" (click)="dataService.logOut();analyticsEvent('התנתק')" class="pnavigation-link pwhite w-nav-link">
+    {{dataService.getText('disConnect')}}
+  </a>
+    <a (click)="dataService.showContacPopup();analyticsEvent('צור קשר')" class="pnavigation-link pwhite w-nav-link">
+      {{dataService.getText('contactUs')}}
+  </a>
+  <a *ngIf="dataService.user.isEmpty() == true && !hidesignup" (click)="dataService.showSignupPopup()" class="pnavigation-link pwhite w-nav-link">
+    {{dataService.getText('enter')}}
+  </a>
+  <a *ngIf="dataService.user.isEmpty()==false;" (click)="analyticsEvent('פרופיל')" [routerLink]="['/profile']" class="pnavigation-link pwhite w-nav-link">
+  {{dataService.getText('private')}}
+  </a>
+  </nav>
+</div>
+
+<progress-bar [type]="type" *ngIf="stages && stage && user && user.contest_stages_map" [stages]="stages" [currentStage]="stage.index"
+  [contestStages]="user.contest_stages"></progress-bar>
+<stage *ngIf="stage && !showCongrats && !showSent && !showFailed && user && user.contest_stages_map && !user.contest_stages_map[type]['onPisa']"
+  [stage]="stage" (answer)="question_answered($event)" [showSent]="showSent"></stage>
+<standalone-pisa-question *ngIf="stages && 
+user &&
+ user.contest_stages_map &&
+  user.contest_stages_map[type]['onPisa'] &&
+   !showCongrats &&
+    (stages.length != user.contest_stages_map[type]['stage'])" [stages]="stages" (answer)="question_answered($event)" (showSent)="showSent=true;"
+  [currentStage]="(user.contest_stages_map[type]['stage']*1)+1"></standalone-pisa-question>
+<congrats *ngIf="showCongrats" (close)="showCongrats = $event;scrollTop()"></congrats>
+<did-not-pass *ngIf="showFailed"></did-not-pass>
+<answer-sent *ngIf="showSent"></answer-sent>
+<popup-finish-challenge *ngIf="stages && !dataService.showGenericPopup && user && user.contest_stages_map && ( (stages.length == user.contest_stages_map['5']['stage']) && user.contest_stages_map[type]['onPisa']) || (user && stages && user.contest_stages_map && stages.length <= user.contest_stages_map['5']['stage'] && !dataService.showGenericPopup)"></popup-finish-challenge>
+<main-footer [showPartners]="false"></main-footer>

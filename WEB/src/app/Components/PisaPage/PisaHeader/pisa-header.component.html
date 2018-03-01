@@ -1,0 +1,26 @@
+<div data-collapse="medium" data-animation="default" data-duration="400" class="navigation-barpp darkpp w-nav">
+  <a class="brand-linkp left-spacingp w-nav-brand"></a>
+  <nav role="navigation" class="navigation-menup w-nav-menu"><a [routerLink]="['/pisaquestions', 5]" class="pnavigation-link pwhite w-nav-link">שאלות</a><a [routerLink]="['/15']"
+    class="pnavigation-link pwhite w-nav-link">אודות</a></nav>
+  <div class="hamburger-buttonp whitep w-nav-button">
+    <div class="w-icon-nav-menu"></div>
+  </div>
+</div>
+<div class="phero-sectionp pquestionsp porange" [ngStyle]="{'background-image': setBgForHeader()}">
+  <div class="rowp w-row">
+    <div class="pcolumn w-col w-col-5"><a href="#" class="button-4p sharepp w-button">אתגר חבר</a><img src="images/share-orange.png" width="35" srcset="images/share-orange-p-500.png 500w, images/share-orange-p-800.png 800w, images/share-orange-p-1080.png 1080w, images/share-orange.png 1990w"
+        sizes="(max-width: 479px) 7vw, 35px" class="image-17p"><img src="images/Big-ball.png" width="750" srcset="images/Big-ball-p-500.png 500w, images/Big-ball-p-800.png 800w, images/Big-ball-p-1080.png 1080w, images/Big-ball-p-1600.png 1600w, images/Big-ball.png 1671w"
+        sizes="100vw" class="imagep"></div>
+    <div class="pcolumn w-clearfix w-col w-col-7">
+      <h1 class="pheadingp">{{levelString}}</h1><img src="images/Rectangle-925.png" class="image-12p"></div>
+  </div>
+  <div class="rowp w-row">
+    <div class="pcolumn w-col w-col-5"><img src="images/Big-ball.png" width="750" srcset="images/Big-ball-p-500.png 500w, images/Big-ball-p-800.png 800w, images/Big-ball-p-1080.png 1080w, images/Big-ball-p-1600.png 1600w, images/Big-ball.png 1671w"
+        sizes="100vw" class="imagep"></div>
+    <div class="pcolumn w-col w-col-7"></div>
+  </div><img src="images/origami-2.png" width="872" srcset="images/origami-2-p-500.png 500w, images/origami-2-p-800.png 800w, images/origami-2-p-1080.png 1080w, images/origami-2-p-1600.png 1600w, images/origami-2-p-2000.png 2000w, images/origami-2-p-2600.png 2600w, images/origami-2-p-3200.png 3200w, images/origami-2.png 3919w"
+    sizes="(max-width: 479px) 100vw, 65vw" class="image-15p w-hidden-tiny"></div>
+
+     <div *ngIf="dataService.showGenericPopup">
+      <alert-popup-message [textForPopup]="dataService.alertMessage" [subTextForPopup]="dataService.alertSubMessage" [success]="dataService.genericPopUpIsSuccess"></alert-popup-message>
+    </div>

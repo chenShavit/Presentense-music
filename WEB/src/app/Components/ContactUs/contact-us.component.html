@@ -1,0 +1,11 @@
+<div class="pop-solid">
+  <h1 class="heading-2 light-title">{{dataService.getText('talkwithus')}}</h1>
+  <form id="contactForm"> 
+  <div class="pop-up w-clearfix"><img src="/images/X.png" class="image-9" id="x" (click)="dataService.showPopupContac=false" >
+    <input type="name" class="groupfield w-input" maxlength="256" name="name"  placeholder="{{dataService.getText('fullName')}}" required>
+    <input type="email" class="groupfield w-input" maxlength="256" name="email" placeholder="{{dataService.getText('emailAddress')}}"  required>
+    <input type="phone" class="groupfield w-input" maxlength="256" name="phone" placeholder="{{dataService.getText('phone')}}" >
+    <textarea class="groupfield w-input" maxlength="256" name="message" placeholder="{{dataService.getText('contactUsMessage')}}" required></textarea>
+    <a (click)="sendContactUsForm()" class="popup-but w-button">{{dataService.getText('sendButton')}}</a>
+  </div>
+</form>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side nav-sidebar-container" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <!-- <img alt="image" class="img-circle" src="../admin-images/logo.png" /> -->
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">Presentense</strong>
+                                </span>
+                            </span>
+                        </a>
+                        </div>
+                        <div class="logo-element">
+                            Presentense
+                        </div>
+                    </li>
+                    <li>
+                        <a href="dashboard"><i class="fa fa-th-large"></i> <span class="nav-label">נתונים כלליים</span></a>
+                    </li>
+                    <% if (adminUser.type == 'administrator' ) { %>                        
+                    <li>
+                        <a href="users"><i class="fa fa-male"></i> <span class="nav-label">משתמשים</span></a>
+                    </li>
+                    <% } %>
+                    <li class="active">
+                        <a href="contests"><i class="fa fa-users"></i> <span class="nav-label">תחרויות</span></a>
+                    </li>
+                    <% if (adminUser.type == 'administrator' ) { %>
+                    <li>
+                        <a href="adminUsers"><i class="fa fa-suitcase"></i> <span class="nav-label">מנהלים</span></a>
+                    </li>
+                    <% } %>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-left">
+                        <li>
+                            <a href="login?signout">
+                                התנתק<i class="fa fa-sign-out"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="wrapper wrapper-content">
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <div class="ibox-title-text-box">
+                                <h5>תשובות לשלב <%= contest.name %> (<%= contest.category.name %>)</h5>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12 table-responsive">
+                                    <table class="table table-hover no-margins prosecutors">
+                                        <thead>
+                                            <tr>
+                                                <th>משתמש</th>
+                                                <th>שלב</th>
+                                                <th>תשובה</th>
+                                                <th>תאריך</th>
+                                                <th>עבר</th>
+                                                <th class="action">פעולות</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i<answers.length; i++) {%>
+                                                <tr>
+                                                    <td>
+                                                        <%= answers[i].user && answers[i].user.email %>
+                                                    </td>
+                                                    <td>
+                                                        <%= answers[i].isPisa ? 'פיזה' : answers[i].stage.index %>
+                                                    </td>
+                                                    <td>
+                                                        <% for(var answer of answers[i].answers) { %>
+                                                            <%= answer %>,
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <%= services.formatDateWithHours(answers[i].createdAt) %>
+                                                    </td>
+                                                    <td>
+                                                        <%= answers[i].result %>
+                                                    </td>
+                                                    <td>
+                                                        <a href="answer?<%= answers[i]._id %>">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        &nbsp;
+                                                        <form id="deleteProsecutorForm<%= answers[i]._id %>" method="post" action="/admin/deleteProsecutor" style="display: inline-block">
+                                                            <input type="hidden" name="_id" value="<%= answers[i]._id %>" />
+                                                            <a onclick="document.getElementById('deleteProsecutorForm<%= answers[i]._id %>').submit();">
+                                                                <i class="fa fa-remove" style="color:red"></i>
+                                                            </a>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <a data-toggle="modal" class="btn btn-white" href="javascript:history.back()">חזור</a>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                <a href="http://moveosoftware.com">moveosoftware.com</a>
+            </div>
+            <div class="pull-left">
+                <strong>Powered by</strong> Moveo Group
+            </div>
+        </div>
+    </div>
+
+    </div>
+<script>
+        $('.prosecutors').DataTable({
+        dom: '<"html5buttons"B>lTfgitp',
+        buttons: [],
+        language: {
+            "search": "חיפוש: ",
+            "zeroRecords": "לא נמצאו רשומות",
+            "info": "מציג עמוד _PAGE_ מתוך _PAGES_",
+            "infoEmpty": "לא נמצאו רשומות",
+            "infoFiltered": "(מתוך _MAX_ בסה״כ)",
+            paginate: {
+                next: 'הבא',
+                previous: 'הקודם'
+            }
+        },
+        deferRender: true,
+        bLengthChange: false,
+        aoColumnDefs: [
+            { 'bSortable': false, 'aTargets': [ 'user-image', 'action' ] }
+        ]
+    });
+</script>
+</body>
+
+</html>

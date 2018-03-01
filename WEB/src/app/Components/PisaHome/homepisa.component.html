@@ -1,0 +1,52 @@
+  <div data-collapse="medium" data-animation="default" data-duration="400" class="navigation-barpp darkpp w-nav"><a href="index.html" class="brand-linkp left-spacingp w-nav-brand"></a>
+    <nav role="navigation" class="navigation-menup w-nav-menu"><a [routerLink]="['/pisaquestions', 5]" class="pnavigation-link pwhite w-nav-link">שאלות</a><a [routerLink]="['/15']" class="pnavigation-link pwhite w-nav-link">אודות</a></nav><!--<a (click)="dataService.changeLanguage()" class="pnavigation-link pwhite w-nav-link">עברית\عربيه</a>-->
+    <div class="hamburger-buttonp whitep w-nav-button">
+      <div class="picon w-icon-nav-menu"></div>
+    </div>
+  </div>
+  <div class="phero-sectionp w-clearfix">
+    <h1 class="pheadingp">אתגר ה-15</h1><img src="images/Rectangle-925.png" width="215" class="image-8p homep">
+    <p class="paragraph-2p homep _1p">?חושבים שאתם חכמים יותר מילד בן 15</p>
+    <div class="conp"></div>
+    <div class="div-block-9p"><img src="images/Rectangle-926.png" srcset="images/Rectangle-926-p-500.png 500w, images/Rectangle-926.png 707w" sizes="(max-width: 479px) 76vw, 100vw" class="image-9p backp">
+      <p class="paragraphp lightp title">על המבחן</p>
+      <p class="paragraphp lightp">כשאנחנו מתמודדים עם בעיות של מתמטיקה ביום יום, כמו לחשב כמה טיפ לשם, איזה קרן פנסיה הכי משתלמת, והאם הרהיט הזה יכנס לנו לסלון, אנחנו עושים את זה באופן כמעט אוטומטי, בדרך מתמטית. 
+        אנחנו מזמינים אתכם לענות על החידות שמציגות מתמטיקה מהחיים, ולגלות האם שריר המתמטיקה שפיתחתם הופך אתכם ליותר חכמים מבני 15. יש לכם באמת ילד או ילדה בני 15? תעשו תחרות, רק אל תתביישו אם הם מנצחים אתכם, תהיו גאים.
+        </p>
+    </div>
+  </div>
+  <div class="sectionp darkp _1p">
+    <div class="conconp w-container">
+      <div class="div-blockp">
+        <h1 class="heading-4p">השאלות</h1>
+        <p class="paragraph-4p">בחרו דרגת קושי</p></div>
+    </div>
+    <div class="div-block-2p w-clearfix"><a [routerLink]="['/pisaquestions', 1]" class="button-3p levelp veryhard w-button">קשה מאוד</a><a [routerLink]="['/pisaquestions', 2]" class="button-3p levelp hard w-button">קשה</a><a [routerLink]="['/pisaquestions', 3]" class="button-3p levelp average w-button">ממוצע</a><a [routerLink]="['/pisaquestions', 4]" class="button-3p levelp easy extremely w-button">קל</a><a [routerLink]="['/pisaquestions', 5]" class="button-3p levelp easy very w-button">קל מאוד</a></div>
+    <p class="paragraph-5p">-   או   -</p>
+    <div class="div-block-2p _2 w-hidden-main w-clearfix"><a href="#" class="button-3p levelp easy very surprise w-button">הפתיעו<br>אותי</a></div>
+    <div class="div-block-6p w-clearfix"><a [routerLink]="['/pisaquestions', randomDifficulty]" class="button-3p levelp shefffel w-hidden-tiny w-button">תפתיעו אותי</a></div>
+  </div>
+  <div class="sectionp lightp">
+    <div class="container-2p w-container">
+      <h1 class="heading-2p darkp">עלינו</h1>
+      <p class="paragraph-3p">אתגר ה-15 הוא יוזמה משותפת ראשונה מסוגה של קרן טראמפ ומט״ח, במטרה להעשיר אנשים מכל הגילאים וכל התחומים לבחון את השריר המתמטי שלהם. אתגר ה-15 הוא חלק מסדרת אתגרים לבני נוער</p>
+      <div class="div-block-2p w-clearfix"><a [routerLink]="['/']" class="button-3p levelp veryhard w-button football-challange-link">אתגר הכדורגל</a></div>
+      <div class="row-2p w-row">
+        <div class="column-2p w-col w-col-6">
+          <div class="p"><img src="images/third.png" class="image-11p"></div>
+        </div>
+        <div class="column-3p w-col w-col-6">
+          <div class="p"><img src="images/second.png" class="image-10p"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footerp accentpp">
+    <div class="container-3p w-container">
+      <div class="float-rightp"><a href="http://www.facebook.com/userid" class="social-icon-linkp w-inline-block"></a><a href="http://www.twitter.com/userid" class="social-icon-linkp w-inline-block"></a><a href="http://www.linkedin.com/userid" class="social-icon-linkp w-inline-block"></a><a class="social-icon-linkp w-inline-block"></a></div>
+      <div class="footer-textp">Powered by</div><img src="images/Moveo-White.png" width="145.5" class="image-4p"></div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+<main-footer [showPartners]="true"></main-footer>

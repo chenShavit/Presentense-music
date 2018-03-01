@@ -1,0 +1,32 @@
+.choices {
+    margin: 35px 0 0 35px;
+    line-height: 42px;
+}
+.w-col:nth-child(1), .w-col:nth-child(3) {
+    /* margin-right: -70px !important; */
+    float: right;
+}
+.w-col:nth-child(1) .choices, .w-col:nth-child(3) .choices{
+    margin-left: 77px;
+    margin-right: -42px;
+}
+.w-container {
+    margin-top: 30px;
+}
+.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+.heading-2.dark.title {
+    line-height: 95px;
+}
+
+@media (max-width: 417px) {
+
+    .choices {
+        margin: 17px 0 0 17px;
+        line-height: 42px;
+        height: 80px;
+    }
+
+}

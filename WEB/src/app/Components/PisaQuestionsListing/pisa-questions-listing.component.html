@@ -1,0 +1,34 @@
+<div class="row-6p _1st w-row pisa-questions-container">
+  <a *ngFor="let question of questions; let i = index" [routerLink]="['/pisa/question/single',level]" [queryParams]="{q: question._id}">
+    <div class="column-12p w-clearfix w-col w-col-6"
+      [class.rightp]="i%2!=0" >
+      <div class="div-block-4p" [ngClass]="{'_2ndrow':i%4==0, '_3rd':i%4==1 , '_8th':i%4==2,'_9th':i%4==3,'rightp':i%2==1}">
+        <h1 class="heading-5p"> {{question.title}}</h1>
+        <!--<img src="images/badge.png" width="114" class="image-14p _2ndbadge">-->
+      </div>
+    </div>
+
+  </a>
+
+  <!-- <div class="column-12p w-clearfix w-col w-col-6">
+    <div class="div-block-4p _2ndrow">
+      <h1 class="heading-5p">רכבל הפוקר</h1>
+    </div>
+  </div>
+  <div class="column-12p w-clearfix w-col w-col-6">
+    <div class="div-block-4p rightp _3rd"><img src="images/badge.png" width="114" class="image-14p _1stbadge">
+      <h1 class="heading-5p">רכבל הפוקר</h1>
+    </div>
+  </div>
+  <div class="column-12p w-clearfix w-col w-col-6">
+    <div class="div-block-4p _8th">
+      <h1 class="heading-5p">רכבל הפוקר</h1>
+    </div>
+  </div>
+  <div class="column-12p w-clearfix w-col w-col-6">
+    <div class="div-block-4p rightp _9th">
+      <h1 class="heading-5p">רכבל הפוקר</h1>
+    </div>
+  </div> -->
+
+</div>

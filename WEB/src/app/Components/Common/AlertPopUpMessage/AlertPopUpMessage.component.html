@@ -1,0 +1,16 @@
+<div class="pop-solid">
+    <div class="pop-up">
+        <div class="close-pop-up-button-container">
+            <img src="../../../images/X.png" alt="X button to close the window" class="close-pop-up-button" (click)="dataService.showGenericPopup=false">
+        </div>
+        <h1 class="heading-2 first-heading">{{textForPopup}}</h1>
+        <h4 class="heading-2">{{subTextForPopup}}</h4>
+        <form>
+            <div class="submit-button">
+                <button (click)="dataService.showGenericPopup=false;dataService.genericPopUpIsSuccess=false" class="popup-but w-button" [ngClass]="{'success': success}">
+                    {{dataService.getText('close')}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

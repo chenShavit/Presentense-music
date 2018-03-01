@@ -1,0 +1,10 @@
+<main-header [hidesignup]="true"></main-header>
+<div class="div-center">
+    <img src="/images/generic-error-sign.svg">
+    <span *ngIf="dataService.currentLanguage.type == 'he'" class="not-yet-sign-text">רגע, האתגר הגדול עוד לא יצא לדרך</span>
+    <span *ngIf="dataService.currentLanguage.type == 'ar'" class="not-yet-sign-text">الانتظار، والتحدي الكبير لم تبدأ بعد</span>
+</div>
+<div *ngIf="date && dataService.currentLanguage.type == 'he'" class="subtext">האתר יפתח ב-{{date}} נתראה אז!</div>
+<div *ngIf="date && dataService.currentLanguage.type == 'ar'" class="subtext">سيتم فتح التحدي في-{{date}} أراك بعد ذلك!</div>
+
+<main-footer [showPartners]="true"></main-footer>

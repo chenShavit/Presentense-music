@@ -1,0 +1,142 @@
+.main-footer-container {
+    direction: rtl;
+    height: 104px;
+}
+
+.moveo-link {
+    margin-bottom: -32px;
+    margin-top: 40px;
+}
+
+.seperator-container {
+    margin-bottom: 23px;
+    margin-left: 101px;
+}
+
+.same-line {
+    display: inline-block;
+}
+
+.separator {
+    width: 100%;
+}
+
+.footer-data-section {
+    margin-left: 101px;
+    height: 35px;
+}
+
+.logo-section {
+    height: 35px;
+    margin-left: 32px;
+}
+
+.links-section {
+    height: 35px;
+    vertical-align: top;
+    line-height: 35px;
+    font-size: 21px;
+}
+
+.social-logos-section {
+    float: left;
+}
+
+.social-logo-margin {
+    margin-right: 37px;
+}
+
+.text-style :hover {
+    color: #8b8b92;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.margin-blue-container {
+    margin-right: 101px;
+}
+
+.background-color-blue-container {
+    background: rgba(86, 116, 185, 0.04);
+}
+
+.text-color {
+    color: #28313a;
+}
+
+.powered-style {
+    display: inline-block;
+    height: 35px;
+    vertical-align: top;
+    margin-top: 6px;
+}
+
+.w-container .w-row {}
+
+.fontFamilyRegular {
+    font-family: 'NarkisBlockMFWRegular'
+}
+
+.fontFamilyMedium {
+    font-family: 'NarkisBlockMFWMedium';
+}
+
+@media (max-width: 417px) {
+    .image-16 {
+        max-width: 150%;
+    }
+    .footer-container {
+        margin: 0 auto;
+        margin-top: -200px;
+    }
+    .image-4 {
+        margin-right: 71px;
+        margin-left: 8px;
+        -webkit-filter: brightness(60%);
+        filter: brightness(60%);
+    }
+    .fashion .container-first-footer {
+        position: relative;
+        top: -347px;
+    }
+    .heading-2-copy {
+        direction: rtl;
+        font-family: 'Almoni dl aaa', sans-serif;
+        font-size: 40pt;
+        font-weight: 900;
+        text-align: right;
+        text-align: center;
+    }
+}
+
+.container-first-footer .row-7.w-row {
+    margin-bottom: 11px;
+    padding-top: 20px;
+}
+
+.terms-link {
+    position: absolute;
+    left: 0px;
+    font-size: 30px;
+    font-family: 'Almoni dl aaa', sans-serif;
+    font-weight: 900;
+    color: #333;
+    cursor: pointer;
+}
+
+@media screen and (max-width:480px) {
+    .misrad.keren {
+        transform: scale(0.6);
+    }
+    .misrad.keren:hover {
+        opacity: 1;
+        -webkit-filter: saturate(154%);
+        filter: saturate(154%);
+        -webkit-transform: translate(0px, -2px) scale(0.8);
+        -ms-transform: translate(0px, -2px) scale(0.8);
+        transform: translate(0px, -2px) scale(0.8);
+        text-shadow: 16px 16px 20px #000;
+    }
+}

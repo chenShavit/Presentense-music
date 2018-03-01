@@ -1,0 +1,62 @@
+<div id="mission-include-container"></div>
+<div class="form-group">
+    <span class="col-sm-2 text-icon-container" id="addNewMission" style="cursor: pointer;">
+        <i class="fa fa-plus plus-icon icon-text-maring " aria-hidden="true"></i>
+        הוסף משימה
+    </span>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">ציון עובר</label>
+    <div class="col-sm-10">
+        <input name="pass_level_score" class="form-control" type="number">
+    </div>
+</div>
+
+<script>
+    function addNewMission() {
+        $('#mission-include-container').append("\
+        <div class=\"form-group\">\
+            <label class=\"col-sm-2 control-label\">סוג שלב</label>\
+            <div class=\"col-sm-10\">\
+                <select name=\"mission_type\" class=\"form-control mission-question-type-select\">\
+                    <option selected value=\"\">בחר סוג שאלה</option>\
+                    <option value=\"free_text\">Free Text</option>\
+                    <option value=\"select\">Select</option>\
+                    <option value=\"multiselect\">Multi Select</option>\
+                    <option value=\"video\">Video Question</option>\
+                    <option value=\"file\">File Upload</option>\
+                </select>\
+            </div>\
+            <div class=\"col-sm-11 mission-dynamic-question-section\"></div>\
+            <div class=\"form-group\">\
+                <label class=\"col-sm-2 control-label\">ציון משימה</label>\
+                <div class=\"col-sm-10\">\
+                    <input name=\"mission_grade\" class=\"form-control\" type=\"number\">\
+                </div>\
+            </div>\
+            <div class=\"form-group\">\
+                <span class=\"col-sm-1 text-icon-container removeMissionRow\" style=\"cursor: pointer;\">\
+                    <i class=\"fa fa-minus minus-icon icon-text-maring \" aria-hidden=\"true\"></i>\
+                    הסר משימה\
+                </span>\
+            </div>\
+        </div>\
+        ")
+
+        $('.removeMissionRow').click(function (e) {
+            e.target.parentElement.parentElement.remove()
+        });
+
+        $('.mission-question-type-select').change(function (e) {
+            $(e.target.parentElement.parentElement).find('.mission-dynamic-question-section').empty();
+            var type = $(this).val();
+            if (type != '')
+                $.get("../questions/" + type + ".html", function (data) {
+                    $(e.target.parentElement.parentElement).find('.mission-dynamic-question-section').append(data)
+                });
+        });
+    }
+
+    $('#addNewMission').click(addNewMission)
+</script>

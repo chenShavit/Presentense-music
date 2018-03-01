@@ -1,0 +1,19 @@
+<div class="pop-up-container">
+    <div class="close-pop-up-button-container">
+        <img src="/images/X.png" alt="X button to close the window" class="close-pop-up-button" (click)="dataService.showConfirmTerms=false">
+    </div>
+    <h1 class="heading-2 first-heading">אשר את התקנון לפני הכניסה</h1>
+    <form >
+        <div class="div-block-2">
+            <img (click)="termsConfirmed = !termsConfirmed" *ngIf="termsConfirmed" src="/images/check.png" class="image-8 check-img">
+            <img (click)="termsConfirmed = !termsConfirmed" *ngIf="!termsConfirmed" src="/images/check_1.png" class="image-8 check-img">
+            <div class="text-block confirm-text">קראתי ואישרתי את
+                <a class="text-span">התקנון</a>
+            </div>
+        </div>
+        
+        <div class="submit-button">
+            <button (click)="termsSubmitted()" class="popup-but w-button" [disabled]="!termsConfirmed">המשך</button>
+        </div>
+    </form>
+</div>

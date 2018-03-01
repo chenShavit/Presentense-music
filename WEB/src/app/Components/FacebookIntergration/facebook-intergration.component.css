@@ -1,0 +1,10 @@
+.fb_iframe_widget{
+  width: 180px;
+  display: block;
+}
+.fb-login-button.fb_iframe_widget {
+  margin-top: -48px;
+  margin-right: -79px;
+  height: 60px;
+  opacity: 0;
+}

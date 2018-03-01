@@ -1,0 +1,33 @@
+<div class="pop-solid">
+  <div class="pop-up w-clearfix">
+    <img src="/images/X.png" class="image-9" (click)="close()">
+    <h1 class="heading-2 light-title">{{dataService.getText('signupTitle')}}</h1>
+    <form>
+      <input [ngModelOptions]="{standalone: true}" type="email" class="groupfield w-input" maxlength="256" [(ngModel)]="user.email" autofocus="true" name=""
+        placeholder="{{dataService.getText('emailAddress')}}" id="Email-Sign" required="">
+      <input (focus)="hideUsernameField = true" (focusout)="hideUsernameField = false" [ngModelOptions]="{standalone: true}" type="password" class="groupfield w-input" maxlength="256" [(ngModel)]="user.password" name="Password-2"
+        data-name="Password 2" placeholder="{{dataService.getText('password')}}" id="Password-Sign" required="">
+    </form>
+    <a (click)="signupSubmitted()" class="popup-but w-button" [ngClass]="{'disabled' : !(user.email && user.password)}">{{dataService.getText('signup')}}</a>
+    <div class="row-4 w-row">
+      <div class="google w-col w-col-6">
+        <google-intergration [showTerms]="!termsConfirmed" (onSuccess)="onGoogleSignup($event)"></google-intergration>
+      </div>
+      <div class="column-5 w-col w-col-6">
+         <facebook-integration [showTerms]="!termsConfirmed" (onSuccess)="onFacebookSignup($event)"></facebook-integration>
+      </div>
+    </div>
+    <div class="div-block-2 terms-section">
+      <img (click)="termsConfirmed = !termsConfirmed" *ngIf="termsConfirmed" src="/images/check.png" class="image-8 check-img">
+      <img (click)="termsConfirmed = !termsConfirmed" *ngIf="!termsConfirmed" src="/images/check_1.png" class="image-8 check-img">
+      <div *ngIf="dataService.currentLanguage.type == 'he'" class="text-block">קראתי ואישרתי את
+        <span class="text-span"><a (click)="gotoTerms()">התקנון</a></span>
+      </div>
+      <div *ngIf="dataService.currentLanguage.type == 'ar'" class="text-block">  وأوافق على المكتوب
+          <span class="text-span"><a (click)="gotoTerms()">قرأت</a></span>
+        </div>
+    </div>
+    <div (click)="dataService.showLoginPopup()" class="exist-user">{{dataService.getText('existUser')}}</div>
+
+  </div>
+</div>

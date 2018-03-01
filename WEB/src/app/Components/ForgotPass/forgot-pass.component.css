@@ -1,0 +1,20 @@
+.w-container {
+    position: relative;
+    max-width: 940px;
+    right: -25%;
+}
+.groupfield {
+    width: 337px;
+    height: 70px;;
+}
+h4.heading-2.dark.comp {
+    font-size: 27pt;
+    font-weight: 400;
+}
+.forgot-password-details {
+    margin-left: 285px;
+}
+.disabled {
+    opacity: 0.5;
+    cursor: default;
+}

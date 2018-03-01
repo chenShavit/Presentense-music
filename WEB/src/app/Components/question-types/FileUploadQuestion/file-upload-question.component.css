@@ -1,0 +1,75 @@
+.w-container {
+    padding-top: 4vh;
+}
+
+.w-container .w-row {
+    margin-right: -10vw;
+    padding-right: 0;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.heading-2.dark.title {
+    line-height: 95px;
+}
+
+.upload-btn:before {
+    content: url('/images/upload-button.png')
+}
+
+.upload-btn {
+    color: #272d38;
+    font-family: "'Almoni dl aaa', sans-serif";
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+}
+
+.file-upload-form {
+    align-self: baseline;
+}
+
+.heading-2.dark.title {
+    margin-bottom: -30px !important;
+    margin-top: -74px !important;
+    margin-right: 58px !important;
+}
+
+.file-upload-form {
+    display: flex;
+    flex-grow: 1;
+    margin: 32px auto;
+    flex-direction: column;
+}
+
+.file-upload-form .file-name {
+    color: #272d38;
+    font-family: "'Almoni dl aaa', sans-serif";
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    margin: 10px auto;
+}
+
+.file-upload-form input[disabled=true]+label .upload-btn {
+    opacity: 0.5;
+}
+
+.success-popup ::ng-deep .close-pop-up-button-container[_ngcontent-c25]:first-child {
+    justify-content: unset;
+}
+
+.success-popup ::ng-deep .pop-up {
+    max-width: 80vw;
+}
+
+@media (max-width: 479px) {
+    .file-upload-label {
+        margin-top: 50px;
+    }
+    
+}

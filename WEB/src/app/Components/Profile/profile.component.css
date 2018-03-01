@@ -1,0 +1,30 @@
+@media screen and (max-width: 480px){
+    .profile-container.w-container {
+        margin-top: 510px;
+    }
+
+    .profile-container .row-but.w-row{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .profile-container .w-input{
+        max-width: 80vw;
+        min-width: 80vw;
+    }
+
+    .profile-container ::ng-deep .heading-2.dark.comp[_ngcontent-c3]{
+        width:initial;
+    }
+
+    .profile-container .blue-but.w-button {
+        margin: 0 auto;
+    }
+
+    .profile-container ::ng-deep .pop-up{
+        max-width: 90vw;
+    }
+
+
+}

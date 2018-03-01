@@ -1,0 +1,157 @@
+.memphis2,
+.memphis1,
+.memphis3,
+.memphis4,
+.memphis5,
+.memphis6 {
+    backface-visibility: hidden;
+}
+
+.w-container {
+    margin-top: 30px;
+}
+
+.cards-title {
+    font-size: 80px !important;
+    line-height: 80px !important;
+}
+
+.square-but-column {
+    cursor: pointer;
+    margin-bottom: 50px;
+    float: right;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.done {
+    margin-top: -52px;
+    margin-left: 30px;
+    position: absolute;
+}
+
+h1.mission-title {
+    text-align: center;
+   
+}
+.mission-title {
+    position: static;
+    display: block;
+    padding-left: 29%;
+    direction: rtl;
+    width: 546px;
+    font-family: 'Almoni dl aaa', sans-serif;
+    color: #272d38;
+    font-weight: 900;
+}
+
+.pisa-cards-container .square-but-column[_ngcontent-c21] {
+    float: right;
+}
+
+
+
+@media screen and (max-width: 479px) {
+    .cards-title {
+        font-size: 40px !important;
+        line-height: 40px !important;
+        margin-right: -31px;
+    }
+    .video-questions-container-social {
+        display: flex;
+        flex-direction: column;
+        width: initial;
+    }
+    .done {
+      margin-left: 137px;
+    }
+    .card-back {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        display: block;
+        width: 250px;
+        height: 125px;
+        margin-top: 31px;
+    }
+    .mission-div img{
+        position: absolute;
+        right: 0px;
+        margin-top: -60px;
+        width: 200px;
+    }
+    .memphis2{
+        height: 125px;
+         margin-top: 31px;
+    }
+    .square-but-title-crad-back {
+        padding-top: 0px;
+   
+        padding-right: auto;
+        padding-left: auto;
+        text-align: center !important;
+        direction: rtl;
+        font-family: 'Almoni dl aaa', sans-serif;
+        color: #fff;
+        line-height: 21px;
+    }
+   .mission-div{
+    width: 313px;
+    margin-top: 122px;
+    height: 79px;
+    border: 1px solid;
+    border-radius: 10px;
+   }
+    .mission-title {
+        margin-bottom: -80px;
+        margin-top: -240px;
+        margin-right: 95px;
+        position: absolute;
+        right: 9px;
+        margin-top: 18px;
+        width: 500px;
+    }
+    .mission-div{
+        border: 1px solid;
+        border-radius: 10px;
+        
+    }
+    .square-but-title {
+        padding-top: 0px;
+    }
+
+.blue-but {
+    position: relative;
+    display: -webkit-box;
+    top: 50px;
+}
+    .memphis1 {
+         margin-top: 29px;
+        display: block;
+        width: 250px;
+        height: 125px;
+    }
+    .square-but-column[_ngcontent-c21] {
+        cursor: pointer;
+        margin-bottom: -75px;
+    }
+    .memphis3 {
+        margin-top: 29px;
+        display: block;
+        width: 250px;
+        height: 125px;
+    }
+    .memphis3[_ngcontent-c21] {
+         margin-top: 106px;
+    }
+    .header-mobile-social[_ngcontent-c1] {
+        display: initial;
+        background-color: black;
+      }
+   
+}
+

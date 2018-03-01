@@ -1,0 +1,99 @@
+<div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">כתובת וידאו</label>
+        <div class="col-sm-10">
+            <input id="video-url-input" type="text" name="video_url" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">מס׳ הפעלות</label>
+        <div class="col-sm-10">
+            <input id="times-to-watch-input" type="number" name="times_to_watch" class="form-control">
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+
+    <div class="col-sm-11 inner-dynamic-question-section"></div>
+    <div class="form-group">
+        <span class="col-sm-2 text-icon-container addNewVideoRow" style="cursor: pointer;">
+            <i class="fa fa-plus plus-icon icon-text-maring " aria-hidden="true"></i>
+            הוסף שאלת וידאו
+        </span>
+    </div>
+</div>
+
+<script>
+    var innerQuestionIndex = 0;
+
+    function addNewVideoRow(e) {
+
+        var targ;
+        if (e)
+            targ = $(e.target.parentElement.parentElement).find('.inner-dynamic-question-section');
+        else
+            targ = $('.inner-dynamic-question-section');
+
+        targ.append("\
+            <div class=\"form-group\">\
+                <label class=\"col-sm-2 control-label\">סוג שלב</label>\
+                <div class=\"col-sm-10\">\
+                    <select name=\"video_type\" class=\"form-control inner-video-question-type-select\">\
+                        <option selected value=\"\">בחר סוג שאלה</option>\
+                        <option value=\"free_text\">Free Text</option>\
+                        <option value=\"select\">Select</option>\
+                        <option value=\"multiselect\">Multi Select</option>\
+                        <option value=\"file\">File Upload</option>\
+                    </select>\
+                </div>\
+                <div class=\"inner-video-dynamic-question-section\"></div>\
+                <span class=\"col-sm-1 text-icon-container removeVideoRow\" style=\"cursor: pointer;\">\
+                    <i class=\"fa fa-minus minus-icon icon-text-maring \" aria-hidden=\"true\"></i>\
+                    הסר שאלת וידאו\
+                </span>\
+            </div>\
+            ");
+
+        $('.removeVideoRow').click(function (e) {
+            if (innerQuestionIndex > 0) {
+                innerQuestionIndex--;
+            }
+
+            e.target.parentElement.remove()
+        });
+
+        $('.inner-video-question-type-select').change(function (e) {
+            console.log('e.target.parentElement' + JSON.stringify(e.target));
+            $(e.target.parentElement).find('.inner-video-dynamic-question-section').empty();
+            var type = $(this).val();
+            if (type != '') {
+                $.get("../questions/" + type + ".html?i=" +innerQuestionIndex, function (data) {
+
+                    $(e.target.parentElement.parentElement).find('.inner-video-dynamic-question-section').append(data);
+                    innerQuestionIndex++;
+                });
+            }
+
+        });
+    }
+    //
+    var currentVideoIteration = -1;
+    function refillData() {
+        $('#video-url-input').val(stage.video_url)
+        $('#times-to-watch-input').val(stage.times_to_watch)
+
+        console.log('stage.video_question ' + stage.video_question);
+        if (stage.video_question) {
+            stage.video_question.forEach((element, index, radio_answers) => {
+                addNewVideoRow();
+                $($('.inner-video-question-type-select')[index]).val(element.video_type).trigger('change');
+                currentVideoIteration = index;
+                console.log('chanegingto', index)
+            });
+        }
+    }
+
+    refillData();
+
+    $('.addNewVideoRow').click(addNewVideoRow);
+
+</script>

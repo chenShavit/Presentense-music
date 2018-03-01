@@ -1,0 +1,21 @@
+<div class="pop-solid">
+  <div class="pop-up w-clearfix">
+    <img src="/images/X.png" class="image-9" (click)="close()">
+    <form>
+      <input type="email" class="groupfield w-input" maxlength="256" [(ngModel)]="user.email" name="Email-2" data-name="Email 2"
+        placeholder="{{dataService.getText('emailAddress')}}" id="Email-2" required="">
+      <input type="password" class="groupfield w-input" maxlength="256" [(ngModel)]="user.password" autofocus="true" name="Password"
+        data-name="Password 2" placeholder="{{dataService.getText('password')}}" id="Password2" required="">
+    </form>
+    <a (click)="loginSubmitted()" class="popup-but w-button" [ngClass]="{'disabled' : !(user.email && user.password)}">{{dataService.getText('login')}}</a>
+    <div class="pass" (click)="forgotPassword()">{{dataService.getText('forgotPassword')}}</div>
+    <div class="row-4 w-row">
+      <div class="google w-col w-col-6">
+        <google-intergration (onSuccess)="onSuccessFacebookLogin($event)"></google-intergration>
+      </div>
+      <div class="column-5 w-col w-col-6">
+         <facebook-integration (onSuccess)="onSuccessFacebookLogin($event)"></facebook-integration>
+      </div>
+    </div>
+  </div>
+</div>
