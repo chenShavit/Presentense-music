@@ -10,6 +10,9 @@
 .w-container {
     margin-top: 30px;
 }
+.mission-div img{
+    display: none;
+}
 
 .cards-title {
     font-size: 80px !important;
@@ -51,7 +54,11 @@ h1.mission-title {
 .pisa-cards-container .square-but-column[_ngcontent-c21] {
     float: right;
 }
-
+@media screen and (min-width:1000px){
+    .mission-title[_ngcontent-c21] {
+    padding-left: 7%;
+    }
+}
 
 
 @media screen and (max-width: 479px) {
@@ -80,10 +87,12 @@ h1.mission-title {
     }
     .mission-div img{
         position: absolute;
-        right: 0px;
+        display: inline;
+        right: -25px;
         margin-top: -60px;
         width: 200px;
     }
+
     .memphis2{
         height: 125px;
          margin-top: 31px;
@@ -111,7 +120,7 @@ h1.mission-title {
         margin-top: -240px;
         margin-right: 95px;
         position: absolute;
-        right: 9px;
+        right: -106px;
         margin-top: 18px;
         width: 500px;
     }

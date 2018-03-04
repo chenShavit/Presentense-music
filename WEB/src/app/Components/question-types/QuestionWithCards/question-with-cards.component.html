@@ -8,7 +8,7 @@
     </div>
     <p class="paragraph par-align-to-right">{{dataService.getText('cardsTextSocial')}}</p>
     
-   <div (click)="!isDesktop && !showCards_music = showCards_music"  class="mission-div">
+   <div (click)="show_music()"  class="mission-div">
      <img *ngIf="showArrow" src="images/right-arrow.svg">
     <h1 class="mission-title">{{dataService.getText('social')}}</h1>
   </div>
@@ -23,7 +23,7 @@
         <div *ngIf="answeredIndexes && answeredIndexes[1][i]" class="done"><img src="/images/approve.png" /></div>
       </div>
     </div>
-    <div (click)="!isDesktop && !showCards = showCards " class="mission-div">
+    <div (click)="show()" class="mission-div">
         <img *ngIf="showArrow" src="images/right-arrow.svg">
     <h1 class="mission-title">{{dataService.getText('socialFirstCardTitle')}}</h1>
   </div>

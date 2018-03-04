@@ -19,14 +19,14 @@ export class QuestionWithCardsComponent implements OnInit {
     type: string
     challengesData: any
     scroll_click: any
-    isDesktop: boolean
     @Input() earnedPoints: number = 0
+    isDesktop: boolean 
     choosenCardIndex: number
     @Input() stage: any
     @Input() answeredIndexes: any
-    showCards: boolean = true
-    showCards_music:boolean= true
-    showArrow:boolean= false
+    showCards: boolean 
+    showCards_music:boolean
+    showArrow:boolean= true
     changeArrow:boolean =true
    
 
@@ -40,6 +40,11 @@ export class QuestionWithCardsComponent implements OnInit {
     ngOnInit(): void {
         this.globals = myGlobals;
         this.isDesktop = myGlobals.isDesktop;
+        if(this.isDesktop){
+            this.showCards=true;
+            this.showCards_music=true;
+            this.showArrow=false;
+        }
         if (this.route.snapshot.params['type']) {
             // this.dataService.getchallengesDataByIndex(this.route.snapshot.params['type'])
             // .then(challengesData => {
@@ -115,6 +120,18 @@ export class QuestionWithCardsComponent implements OnInit {
 
 
 
+    }
+    show(){
+        if(myGlobals.isDesktop==false){
+            this.showCards = !this.showCards
+            this.showArrow=true
+        }
+    }
+    show_music(){
+        if(myGlobals.isDesktop==false){
+            this.showCards_music = !this.showCards_music
+            this.showArrow=true
+        }
     }
  
 }
